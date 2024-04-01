@@ -3,9 +3,12 @@ import useButtonPanel from '../hooks/useButtonPanel';
 import { CharacterData as Data } from '../types.d';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import Button from './Button';
+import FinalScore from './FinalScore';
 
 interface Props {
   nextCharacterData: {
+    newGame: boolean;
+    setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
     setState: React.Dispatch<React.SetStateAction<number[]>>;
     randomIndex: number;
     character: Data;
@@ -13,7 +16,7 @@ interface Props {
 }
 
 interface buttonDataProps {
-  disabledNextButton: boolean;
+  disabledNextButton: string;
   nextCharacter: () => void;
 }
 
@@ -43,25 +46,29 @@ const ButtonPanel = ({ nextCharacterData }: Props) => {
 
   return (
     <>
-      <div>
-        <p>{`Tiempo restante: ${count}`}</p>
-        <p>{`Tienes ${points} puntos`}</p>
-        <p>{`Tienes ${failures} fallos`}</p>
-        {responseOption.map((option, index) => (
-          <button
-            key={index}
-            disabled={disableButton}
-            onClick={() => responseHandler(index)}
-            className={`${basicButtonStyle} ${
-              buttonClickedIndexGreen === index && greenButtonStyle
-            } ${buttonClickedIndexRed === index && redButtonStyle}`}
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-      <p>{failOrSuccessfulMessage}</p>
-      <Button handler={buttonData}>Siguiente Personaje</Button>
+      <>
+        <div>
+          <p>{`Tiempo restante: ${count}`}</p>
+          <p>{`Tienes ${points} puntos`}</p>
+          <p>{`Tienes ${failures} fallos`}</p>
+          {responseOption.map((option, index) => (
+            <button
+              key={index}
+              disabled={disableButton}
+              onClick={() => responseHandler(index)}
+              className={`${basicButtonStyle} ${
+                buttonClickedIndexGreen === index && greenButtonStyle
+              } ${buttonClickedIndexRed === index && redButtonStyle}`}
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+        <p>{failOrSuccessfulMessage}</p>
+        <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
+      </>
+
+      <FinalScore points={points} />
     </>
   );
 };

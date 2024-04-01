@@ -5,6 +5,7 @@ import dragonBallJson from '../../dragonBall.json';
 const useCharacterQuiz = () => {
   const endOfTheGame: string = 'Has terminado el juego';
   const [state, setState] = React.useState<number[]>([]);
+  const [newGame, setNewGame] = React.useState<boolean>(true);
 
   //Array de índices disponibles, tras eliminar las coincidencias con el estado:
   const availableIndex = deleteIndex(state, 58);
@@ -26,6 +27,8 @@ const useCharacterQuiz = () => {
     character,
     randomIndex,
     endOfTheGame,
+    newGame,
+    setNewGame,
   };
 };
 export default useCharacterQuiz;

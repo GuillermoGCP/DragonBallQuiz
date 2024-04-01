@@ -3,10 +3,19 @@ import useCharacterQuiz from '../hooks/useCharacterQuiz';
 import ButtonPanel from '../components/ButtonPanel';
 
 const CharactersQuiz = () => {
-  const { setState, character, randomIndex, endOfTheGame } = useCharacterQuiz();
+  const {
+    setState,
+    character,
+    randomIndex,
+    endOfTheGame,
+    setNewGame,
+    newGame,
+  } = useCharacterQuiz();
 
   const nextCharacterData = {
     setState,
+    setNewGame,
+    newGame,
     randomIndex,
     character,
   };
@@ -15,8 +24,20 @@ const CharactersQuiz = () => {
     <>
       {character !== undefined ? (
         <>
-          <Character character={character} />
-          <ButtonPanel nextCharacterData={nextCharacterData} />
+          {newGame ? (
+            <>
+              <Character character={character} />
+              <ButtonPanel nextCharacterData={nextCharacterData} />
+            </>
+          ) : (
+            <button
+              onClick={() => {
+                setNewGame(true);
+              }}
+            >
+              Nueva partida
+            </button>
+          )}
         </>
       ) : (
         <p>{endOfTheGame}</p>
