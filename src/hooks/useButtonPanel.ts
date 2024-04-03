@@ -1,18 +1,24 @@
 import React from 'react';
 import dragonBallCharactersJson from '../../dragonBallCharacters.json';
-import { CharacterData as Data } from '../types.d';
+import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
+import { CharacterData, PlanetsData } from '../types.d';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 
 type nextCharacterData = {
   setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
   setState: React.Dispatch<React.SetStateAction<number[]>>;
   randomIndex: number;
-  character: Data;
+  character?: CharacterData;
+  planet?: PlanetsData;
 };
 
 const useButtonPanel = (nextCharacterData: nextCharacterData) => {
-  const { setState, randomIndex, character, setNewGame } = nextCharacterData;
-  const characterName = character.name;
+  const { setState, randomIndex, character, planet, setNewGame } =
+    nextCharacterData;
+
+  const characterName = character?.name;
+  const planetName = planet?.name;
+
   const { setFinalScore } = React.useContext(ButtonPanelContext);
 
   //Estado para mostrar el contador:
@@ -53,14 +59,27 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
-    const firstOption =
-      dragonBallCharactersJson[Math.floor(Math.random() * 29)].name;
-    const secondOption =
-      dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name;
-    const correctAnswer = characterName;
+    let firstOption;
+    character
+      ? (firstOption =
+          dragonBallCharactersJson[Math.floor(Math.random() * 29)].name)
+      : (firstOption =
+          dragonBallPlanetsJson[Math.floor(Math.random() * 10)].name);
+
+    let secondOption;
+    character
+      ? (secondOption =
+          dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name)
+      : (secondOption =
+          dragonBallPlanetsJson[Math.floor(Math.random() * 10 + 10)].name);
+
+    let correctAnswer;
+    character ? (correctAnswer = characterName) : (correctAnswer = planetName);
+
     const options = [firstOption, secondOption, correctAnswer];
+
     return options.sort(() => Math.random() - 0.5);
-  }, [characterName]);
+  }, [characterName, planetName, character]);
 
   //Contador inicial, al cargarse la página:
   React.useEffect(() => {
@@ -116,7 +135,10 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
   //Handler del botón clicado:
   const responseHandler = (index: number) => {
-    if (responseOption[index] === characterName) {
+    if (
+      responseOption[index] === characterName ||
+      responseOption[index] === planetName
+    ) {
       let gamerPoints = points;
       gamerPoints++;
       setPoints(gamerPoints);

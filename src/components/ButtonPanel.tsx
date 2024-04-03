@@ -1,6 +1,6 @@
 import React from 'react';
 import useButtonPanel from '../hooks/useButtonPanel';
-import { CharacterData as Data } from '../types.d';
+import { CharacterData, PlanetsData } from '../types.d';
 import Button from './Button';
 
 interface buttonPanelProps {
@@ -9,7 +9,8 @@ interface buttonPanelProps {
     setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
     setState: React.Dispatch<React.SetStateAction<number[]>>;
     randomIndex: number;
-    character: Data;
+    character?: CharacterData;
+    planet?: PlanetsData;
   };
 }
 

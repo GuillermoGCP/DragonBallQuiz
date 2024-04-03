@@ -1,58 +1,56 @@
-// // import useCharacterQuiz from '../hooks/useCharacterQuiz';
-// import ButtonPanel from '../components/ButtonPanel';
-// import FinalScore from '../components/FinalScore';
-// import { ButtonPanelContext } from '../contexts/buttonPanelContext';
-// import React from 'react';
+import usePlanetsQuiz from '../hooks/usePlanetsQuiz';
+import FinalScore from '../components/FinalScore';
+import { ButtonPanelContext } from '../contexts/buttonPanelContext';
+import React from 'react';
+import CharacterOrPlanet from '../components/CharacterOrPlanet';
+import NewGameButton from '../components/NewGameButton';
+import ButtonPanel from '../components/ButtonPanel';
 
-// const PlanetsQuiz = () => {
-//   // const {
-//   //   setIndexState,
-//   //   character,
-//   //   randomIndex,
-//   //   endOfTheGame,
-//   //   setNewGame,
-//   //   newGame,
-//   // } = useCharacterQuiz();
+const PlanetsQuiz = () => {
+  const {
+    setIndexState,
+    planet,
+    randomIndex,
+    endOfTheGame,
+    setNewGame,
+    newGame,
+  } = usePlanetsQuiz();
 
-//   // const nextCharacterData = {
-//   //   setState: setIndexState,
-//   //   setNewGame,
-//   //   newGame,
-//   //   randomIndex,
-//   //   character,
-//   // };
-//   const { finalScore } = React.useContext(ButtonPanelContext);
+  const handler = () => setNewGame(true);
 
-//   const finalScoreData = {
-//     points: finalScore,
-//     numberOfQuestions: 20,
-//   };
-//   return (
-//     <>
-//       {character !== undefined ? (
-//         <>
-//           {newGame ? (
-//             <>
-//               <Character character={character} />
-//               <ButtonPanel nextCharacterData={nextCharacterData} />
-//             </>
-//           ) : (
-//             <>
-//               <button
-//                 onClick={() => {
-//                   setNewGame(true);
-//                 }}
-//               >
-//                 Nueva partida
-//               </button>
-//               <FinalScore finalScoreData={finalScoreData} />
-//             </>
-//           )}
-//         </>
-//       ) : (
-//         <p>{endOfTheGame}</p>
-//       )}
-//     </>
-//   );
-// };
-// export default PlanetsQuiz;
+  const nextCharacterData = {
+    setState: setIndexState,
+    setNewGame,
+    newGame,
+    randomIndex,
+    planet,
+  };
+  const { finalScore } = React.useContext(ButtonPanelContext);
+
+  const finalScoreData = {
+    points: finalScore,
+    numberOfQuestions: 20,
+  };
+  return (
+    <>
+      {planet !== undefined ? (
+        <>
+          {newGame ? (
+            <>
+              <CharacterOrPlanet character={planet} />
+              <ButtonPanel nextCharacterData={nextCharacterData} />
+            </>
+          ) : (
+            <>
+              <NewGameButton handler={handler}>Nueva partida</NewGameButton>
+              <FinalScore finalScoreData={finalScoreData} />
+            </>
+          )}
+        </>
+      ) : (
+        <p>{endOfTheGame}</p>
+      )}
+    </>
+  );
+};
+export default PlanetsQuiz;
