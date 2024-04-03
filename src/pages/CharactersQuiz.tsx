@@ -1,9 +1,10 @@
-import Character from '../components/Character';
+import CharacterOrPlanet from '../components/CharacterOrPlanet';
 import useCharacterQuiz from '../hooks/useCharacterQuiz';
 import ButtonPanel from '../components/ButtonPanel';
 import FinalScore from '../components/FinalScore';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import React from 'react';
+import NewGameButton from '../components/NewGameButton';
 
 const CharactersQuiz = () => {
   const {
@@ -28,24 +29,19 @@ const CharactersQuiz = () => {
     points: finalScore,
     numberOfQuestions: 58,
   };
+  const handler = () => setNewGame(true);
   return (
     <>
       {character !== undefined ? (
         <>
           {newGame ? (
             <>
-              <Character character={character} />
+              <CharacterOrPlanet character={character} />
               <ButtonPanel nextCharacterData={nextCharacterData} />
             </>
           ) : (
             <>
-              <button
-                onClick={() => {
-                  setNewGame(true);
-                }}
-              >
-                Nueva partida
-              </button>
+              <NewGameButton handler={handler}>Nueva partida</NewGameButton>
               <FinalScore finalScoreData={finalScoreData} />
             </>
           )}

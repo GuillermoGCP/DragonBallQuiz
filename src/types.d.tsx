@@ -11,8 +11,18 @@ export interface CharacterData {
   affiliation: string;
   deletedAt: null;
 }
-export interface Props {
-  character: CharacterData;
+
+export interface PlanetsData {
+  id: number;
+  name: string;
+  isDestroyed: boolean;
+  description: string;
+  image: string;
+  deletedAt: null;
+}
+
+export interface CharacterPlanetProps {
+  character: CharacterData | PlanetsData;
 }
 
 //CONTEXT
