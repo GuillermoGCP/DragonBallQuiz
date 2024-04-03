@@ -1,14 +1,14 @@
 import { shuffleArray, deleteIndex } from '../services/functions';
 import React from 'react';
-import dragonBallJson from '../../dragonBall.json';
+import dragonBallCharactersJson from '../../dragonBallCharacters.json';
 
 const useCharacterQuiz = () => {
   const endOfTheGame: string = 'Has terminado el juego';
-  const [state, setState] = React.useState<number[]>([]);
+  const [IndexState, setIndexState] = React.useState<number[]>([]);
   const [newGame, setNewGame] = React.useState<boolean>(true);
 
   //Array de índices disponibles, tras eliminar las coincidencias con el estado:
-  const availableIndex = deleteIndex(state, 58);
+  const availableIndex = deleteIndex(IndexState, 58);
   if (availableIndex.length === 0) {
     console.log('Has terminado el juego');
   }
@@ -19,11 +19,13 @@ const useCharacterQuiz = () => {
   const randomIndex = shuffledIndex[0];
 
   //Se adjudica a la variable para ser pintada:
-  const character = dragonBallJson[randomIndex] && dragonBallJson[randomIndex];
+  const character =
+    dragonBallCharactersJson[randomIndex] &&
+    dragonBallCharactersJson[randomIndex];
 
   return {
-    state,
-    setState,
+    IndexState,
+    setIndexState,
     character,
     randomIndex,
     endOfTheGame,

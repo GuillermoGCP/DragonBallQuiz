@@ -1,10 +1,13 @@
 import Character from '../components/Character';
 import useCharacterQuiz from '../hooks/useCharacterQuiz';
 import ButtonPanel from '../components/ButtonPanel';
+import FinalScore from '../components/FinalScore';
+import { ButtonPanelContext } from '../contexts/buttonPanelContext';
+import React from 'react';
 
 const CharactersQuiz = () => {
   const {
-    setState,
+    setIndexState,
     character,
     randomIndex,
     endOfTheGame,
@@ -13,13 +16,18 @@ const CharactersQuiz = () => {
   } = useCharacterQuiz();
 
   const nextCharacterData = {
-    setState,
+    setState: setIndexState,
     setNewGame,
     newGame,
     randomIndex,
     character,
   };
+  const { finalScore } = React.useContext(ButtonPanelContext);
 
+  const finalScoreData = {
+    points: finalScore,
+    numberOfQuestions: 58,
+  };
   return (
     <>
       {character !== undefined ? (
@@ -30,13 +38,16 @@ const CharactersQuiz = () => {
               <ButtonPanel nextCharacterData={nextCharacterData} />
             </>
           ) : (
-            <button
-              onClick={() => {
-                setNewGame(true);
-              }}
-            >
-              Nueva partida
-            </button>
+            <>
+              <button
+                onClick={() => {
+                  setNewGame(true);
+                }}
+              >
+                Nueva partida
+              </button>
+              <FinalScore finalScoreData={finalScoreData} />
+            </>
           )}
         </>
       ) : (

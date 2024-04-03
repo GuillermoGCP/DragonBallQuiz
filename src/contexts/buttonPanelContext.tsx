@@ -6,34 +6,11 @@ const ButtonPanelContext = React.createContext<ButtonPanelContextType>(
 );
 
 const ButtonPanelProvider = ({ children }: ButtonPanelProps) => {
-  //Estado para la respuesta a la elección del jugador:
-  const [response, setResponse] = React.useState<string>('');
-  //Estado para desabilitar el panel de botones:
-  const [disableButton, setDisableButton] = React.useState<boolean>(false);
-
-  //Estado para pintar de verde la respuesta correcta:
-  const [buttonClickedIndexGreen, setButtonClickedIndexGreen] = React.useState<
-    number | null
-  >(null);
-
-  //Estado para pintar de rojo la respuesta incorrecta:
-  const [buttonClickedIndexRed, setButtonClickedIndexRed] = React.useState<
-    number | null
-  >(null);
+  //Estado con la puntuación final, que solo se actualiza cuando termina la partida:
+  const [finalScore, setFinalScore] = React.useState(0);
 
   return (
-    <ButtonPanelContext.Provider
-      value={{
-        response,
-        setResponse,
-        disableButton,
-        setDisableButton,
-        buttonClickedIndexGreen,
-        setButtonClickedIndexGreen,
-        buttonClickedIndexRed,
-        setButtonClickedIndexRed,
-      }}
-    >
+    <ButtonPanelContext.Provider value={{ finalScore, setFinalScore }}>
       {children}
     </ButtonPanelContext.Provider>
   );

@@ -1,11 +1,9 @@
 import React from 'react';
 import useButtonPanel from '../hooks/useButtonPanel';
 import { CharacterData as Data } from '../types.d';
-import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import Button from './Button';
-import FinalScore from './FinalScore';
 
-interface Props {
+interface buttonPanelProps {
   nextCharacterData: {
     newGame: boolean;
     setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,7 +18,7 @@ interface buttonDataProps {
   nextCharacter: () => void;
 }
 
-const ButtonPanel = ({ nextCharacterData }: Props) => {
+const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
   const {
     responseHandler,
     responseOption,
@@ -29,16 +27,13 @@ const ButtonPanel = ({ nextCharacterData }: Props) => {
     count,
     points,
     failures,
-  } = useButtonPanel(nextCharacterData);
-
-  const buttonData: buttonDataProps = { disabledNextButton, nextCharacter };
-
-  const {
     response: failOrSuccessfulMessage,
     disableButton,
     buttonClickedIndexGreen,
     buttonClickedIndexRed,
-  } = React.useContext(ButtonPanelContext);
+  } = useButtonPanel(nextCharacterData);
+
+  const buttonData: buttonDataProps = { disabledNextButton, nextCharacter };
 
   const redButtonStyle: string = 'border p-3 m-2 bg-red-700';
   const greenButtonStyle: string = 'border p-3 m-2 bg-green-700';
@@ -46,29 +41,25 @@ const ButtonPanel = ({ nextCharacterData }: Props) => {
 
   return (
     <>
-      <>
-        <div>
-          <p>{`Tiempo restante: ${count}`}</p>
-          <p>{`Tienes ${points} puntos`}</p>
-          <p>{`Tienes ${failures} fallos`}</p>
-          {responseOption.map((option, index) => (
-            <button
-              key={index}
-              disabled={disableButton}
-              onClick={() => responseHandler(index)}
-              className={`${basicButtonStyle} ${
-                buttonClickedIndexGreen === index && greenButtonStyle
-              } ${buttonClickedIndexRed === index && redButtonStyle}`}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
-        <p>{failOrSuccessfulMessage}</p>
-        <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
-      </>
-
-      <FinalScore points={points} />
+      <div>
+        <p>{`Tiempo restante: ${count}`}</p>
+        <p>{`Tienes ${points} puntos`}</p>
+        <p>{`Tienes ${failures} fallos`}</p>
+        {responseOption.map((option, index) => (
+          <button
+            key={index}
+            disabled={disableButton}
+            onClick={() => responseHandler(index)}
+            className={`${basicButtonStyle} ${
+              buttonClickedIndexGreen === index && greenButtonStyle
+            } ${buttonClickedIndexRed === index && redButtonStyle}`}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+      <p>{failOrSuccessfulMessage}</p>
+      <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
     </>
   );
 };

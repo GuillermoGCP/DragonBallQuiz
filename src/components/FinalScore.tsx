@@ -1,7 +1,14 @@
-const FinalScore = ({ points }) => {
+type Props = {
+  finalScoreData: {
+    points: number;
+    numberOfQuestions: number;
+  };
+};
+const FinalScore = ({ finalScoreData }: Props) => {
+  const { points, numberOfQuestions } = finalScoreData;
   return (
     <>
-      <p>{`¡Has obtenido ${points} puntos de 58 posibles!`}</p>
+      <p>{`¡Has obtenido ${points} puntos de ${numberOfQuestions} posibles!`}</p>
     </>
   );
 };

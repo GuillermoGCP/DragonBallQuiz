@@ -1,18 +1,19 @@
 import React from 'react';
-import dragonBallJson from '../../dragonBall.json';
-import { ButtonPanelContext } from '../contexts/buttonPanelContext';
+import dragonBallCharactersJson from '../../dragonBallCharacters.json';
 import { CharacterData as Data } from '../types.d';
+import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 
-interface nextCharacterData {
+type nextCharacterData = {
   setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
   setState: React.Dispatch<React.SetStateAction<number[]>>;
   randomIndex: number;
   character: Data;
-}
+};
 
 const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   const { setState, randomIndex, character, setNewGame } = nextCharacterData;
   const characterName = character.name;
+  const { setFinalScore } = React.useContext(ButtonPanelContext);
 
   //Estado para mostrar el contador:
   const [count, setCount] = React.useState(30);
@@ -28,24 +29,34 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Estado para mostrar u ocultar el botón next:
   const [disabledNextButton, setDisabledNextButton] = React.useState('');
 
-  //Estado para almacenar y mostrar la puntuación del jugador:
-  const [points, setPoints] = React.useState<number>(0);
-
   //Estado para almacenar los fallos:
   const [failures, setFailures] = React.useState<number>(0);
 
-  const {
-    setResponse,
-    setDisableButton,
-    setButtonClickedIndexGreen,
-    setButtonClickedIndexRed,
-  } = React.useContext(ButtonPanelContext);
+  //Estado para la respuesta a la elección del jugador:
+  const [response, setResponse] = React.useState<string>('');
+
+  //Estado para desabilitar el panel de botones:
+  const [disableButton, setDisableButton] = React.useState<boolean>(false);
+
+  //Estado para pintar de verde la respuesta correcta:
+  const [buttonClickedIndexGreen, setButtonClickedIndexGreen] = React.useState<
+    number | null
+  >(null);
+
+  //Estado para pintar de rojo la respuesta incorrecta:
+  const [buttonClickedIndexRed, setButtonClickedIndexRed] = React.useState<
+    number | null
+  >(null);
+
+  //Estado para almacenar y mostrar la puntuación del jugador:
+  const [points, setPoints] = React.useState<number>(0);
 
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
-    const firstOption = dragonBallJson[Math.floor(Math.random() * 29)].name;
+    const firstOption =
+      dragonBallCharactersJson[Math.floor(Math.random() * 29)].name;
     const secondOption =
-      dragonBallJson[Math.floor(Math.random() * 29 + 29)].name;
+      dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name;
     const correctAnswer = characterName;
     const options = [firstOption, secondOption, correctAnswer];
     return options.sort(() => Math.random() - 0.5);
@@ -55,7 +66,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   React.useEffect(() => {
     setDisableButton(false);
     setDisabledNextButton('hidden');
-    let counter = 10;
+    let counter = 30;
     const InitialInterval = setInterval(() => {
       counter--;
       setCount(counter);
@@ -88,7 +99,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     setDisabledNextButton('hidden');
 
     //Activa el contador para la siguiente pregunta:
-    let counter = 10;
+    let counter = 30;
     const interval = setInterval(() => {
       counter--;
       setCount(counter);
@@ -128,6 +139,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
       //Cuando se termina el juego por haber fallado:
       if (failures === 5) {
+        setFinalScore(points);
         setResponse('Fin del juego');
         setNewGame(false);
         setDisabledNextButton('hidden');
@@ -151,6 +163,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       }
     }
   };
+
   return {
     responseHandler,
     responseOption,
@@ -159,6 +172,10 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     disabledNextButton,
     points,
     failures,
+    response,
+    disableButton,
+    buttonClickedIndexGreen,
+    buttonClickedIndexRed,
   };
 };
 export default useButtonPanel;
