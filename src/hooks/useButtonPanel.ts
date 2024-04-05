@@ -57,29 +57,59 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Estado para almacenar y mostrar la puntuación del jugador:
   const [points, setPoints] = React.useState<number>(0);
 
+  //Estados y lógica para el botón del 50% (Onda Vital):
+  const [showOnlyTwoButtons, setShowOnlyTwoButtons] =
+    React.useState<boolean>(false);
+
+  const [ondaDesactivatedButton, setOndaDesactivatedButton] =
+    React.useState<boolean>(false);
+
+  const twoButtons = () => {
+    setShowOnlyTwoButtons(true);
+    setOndaDesactivatedButton(true);
+  };
+
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
     let firstOption;
     character
-      ? (firstOption =
-          dragonBallCharactersJson[Math.floor(Math.random() * 29)].name)
-      : (firstOption =
-          dragonBallPlanetsJson[Math.floor(Math.random() * 10)].name);
+      ? (firstOption = {
+          firstOption:
+            dragonBallCharactersJson[Math.floor(Math.random() * 29)].name,
+        })
+      : (firstOption = {
+          firstOption:
+            dragonBallPlanetsJson[Math.floor(Math.random() * 10)].name,
+        });
 
     let secondOption;
     character
-      ? (secondOption =
-          dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name)
-      : (secondOption =
-          dragonBallPlanetsJson[Math.floor(Math.random() * 10 + 10)].name);
+      ? (secondOption = {
+          secondOption:
+            dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name,
+        })
+      : (secondOption = {
+          secondOption:
+            dragonBallPlanetsJson[Math.floor(Math.random() * 10 + 10)].name,
+        });
 
     let correctAnswer;
-    character ? (correctAnswer = characterName) : (correctAnswer = planetName);
+    character
+      ? (correctAnswer = { correctAnswer: characterName })
+      : (correctAnswer = { correctAnswer: planetName });
 
-    const options = [firstOption, secondOption, correctAnswer];
+    const options: object[] = [firstOption, secondOption, correctAnswer];
 
     return options.sort(() => Math.random() - 0.5);
   }, [characterName, planetName, character]);
+
+  //Lógica para el botón del 50% (Onda Vital): Modifico el array de respuestas y elimina la primera opción, dejando la segunda opción y la respuesta correcta:
+  const firstOptionIndex = responseOption.findIndex(
+    (option) => Object.keys(option)[0] === 'firstOption'
+  );
+  if (firstOptionIndex !== -1 && showOnlyTwoButtons) {
+    responseOption.splice(firstOptionIndex, 1);
+  }
 
   //Contador inicial, al cargarse la página:
   React.useEffect(() => {
@@ -90,6 +120,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       counter--;
       setCount(counter);
       if (counter === 0) {
+        setOndaDesactivatedButton(true);
         clearInterval(InitialInterval);
         setFailures(failures + 1);
         setDisabledNextButton('');
@@ -117,12 +148,16 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     //Desactivo el botón hasta que acabe el contador o se clique en alguna respuesta:
     setDisabledNextButton('hidden');
 
+    //Tras usar el botón del 50% (onda vital) en la siguiente ronda vuelven a aparecer las tres opciones:
+    setShowOnlyTwoButtons(false);
+
     //Activa el contador para la siguiente pregunta:
     let counter = 30;
     const interval = setInterval(() => {
       counter--;
       setCount(counter);
       if (counter === 0) {
+        setOndaDesactivatedButton(true);
         setFailures(failures + 1);
         clearInterval(interval);
         setDisabledNextButton('');
@@ -136,8 +171,8 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Handler del botón clicado:
   const responseHandler = (index: number) => {
     if (
-      responseOption[index] === characterName ||
-      responseOption[index] === planetName
+      Object.values(responseOption[index])[0] === characterName ||
+      Object.values(responseOption[index])[0] === planetName
     ) {
       let gamerPoints = points;
       gamerPoints++;
@@ -198,6 +233,10 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     disableButton,
     buttonClickedIndexGreen,
     buttonClickedIndexRed,
+    showOnlyTwoButtons,
+    setShowOnlyTwoButtons,
+    twoButtons,
+    ondaDesactivatedButton,
   };
 };
 export default useButtonPanel;
