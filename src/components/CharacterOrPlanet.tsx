@@ -5,8 +5,13 @@ const CharacterOrPlanet = ({
 }: CharacterPlanetProps) => {
   return (
     <>
-      <img className='w-24 h-auto' src={characterOrPlanet.image} />
-      <div className='w-4/6 border p-5'>
+      <div className='flex justify-center my-6 '>
+        <img
+          className='w-60 h-auto rounded-xl '
+          src={characterOrPlanet.image}
+        />
+      </div>
+      <div className='w-4/6 border p-5 hidden md:block'>
         <p>{characterOrPlanet.description}</p>
       </div>
     </>

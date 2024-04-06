@@ -63,6 +63,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   const [ondaDesactivatedButton, setOndaDesactivatedButton] =
     React.useState<boolean>(false);
   const twoButtons = () => {
+    setBonus(0);
     setShowOnlyTwoButtons(true);
     setOndaDesactivatedButton(true);
   };

@@ -1,14 +1,7 @@
 //Buton panel styles:
-const redButtonStyle: string = 'border p-3 m-2 bg-red-700';
-const greenButtonStyle: string = 'border p-3 m-2 bg-green-700';
-const basicButtonStyle: string = 'border p-3 m-2 hover:border-black';
-const ondaActivatedStyle: string = 'border p-3 m-2 bg-orange-700';
-const ondaDesactivatedStyle: string = 'border p-3 m-2 bg-blue-700';
+const redButtonStyle: string = 'bg-red-700 text-white';
+const greenButtonStyle: string = 'bg-green-700 text-white';
+const basicButtonStyle: string =
+  'bg-gray-200  text-gray-800 font-bold py-2 px-4 rounded-lg w-64 h-10  hover:scale-95';
 
-export {
-  redButtonStyle,
-  greenButtonStyle,
-  basicButtonStyle,
-  ondaActivatedStyle,
-  ondaDesactivatedStyle,
-};
+export { redButtonStyle, greenButtonStyle, basicButtonStyle };

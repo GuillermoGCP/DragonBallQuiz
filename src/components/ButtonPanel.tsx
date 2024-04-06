@@ -6,8 +6,6 @@ import {
   redButtonStyle,
   greenButtonStyle,
   basicButtonStyle,
-  // ondaActivatedStyle,
-  // ondaDesactivatedStyle,
 } from '../utils/styles';
 
 interface buttonPanelProps {
@@ -27,6 +25,7 @@ interface buttonDataProps {
 }
 
 const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
+  const { character } = nextCharacterData;
   const {
     responseHandler,
     responseOption,
@@ -41,7 +40,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
     buttonClickedIndexRed,
     showOnlyTwoButtons,
     twoButtons,
-    ondaDesactivatedButton,
+    ondaDesactivatedButton: dragonDesactivatedButton,
     finalBalls,
   } = useButtonPanel(nextCharacterData);
 
@@ -49,73 +48,88 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
 
   return (
     <>
-      <div className='flex flex-col items-center justify-center'>
-        <div className='flex items-center justify-center mb-4'>
-          {finalBalls.map((ball, index) => (
-            <img
-              key={index}
-              className='w-6 mr-2'
-              src={ball}
-              alt={`Ball ${index}`}
-            />
-          ))}
-        </div>
-        <p>{`Tiempo restante: ${count}`}</p>
-        <p>{`Tienes ${points} puntos`}</p>
-        <p>{`Tienes ${failures} fallos`}</p>
-        <button
-          // className={
-          //   ondaDesactivatedButton ? ondaActivatedStyle : ondaDesactivatedStyle
-          // }
-          disabled={ondaDesactivatedButton}
-          onClick={twoButtons}
-          className='relative'
-        >
-          {!ondaDesactivatedButton && (
-            <img className='w-16 rounded-full' src='/dragon.jpg' alt='Dragon' />
-          )}
-        </button>
-
-        {!showOnlyTwoButtons ? (
-          <>
-            {responseOption.map((option, index) => {
-              const optionToPrint = Object.values(option)[0];
-
-              return (
-                <button
-                  key={index}
-                  disabled={disableButton}
-                  onClick={() => responseHandler(index)}
-                  className={`${basicButtonStyle} ${
-                    buttonClickedIndexGreen === index && greenButtonStyle
-                  } ${buttonClickedIndexRed === index && redButtonStyle} mt-2`}
-                >
-                  {optionToPrint}
-                </button>
-              );
-            })}
-          </>
-        ) : (
-          responseOption.map((option, index) => {
-            const optionToPrint = Object.values(option)[0];
-            return (
-              <button
+      <div className='bg-gradient-to-t from-[#e8a20a] to-white h-[44vh]'>
+        <div className='h-6 flex justify-center'>
+          {dragonDesactivatedButton &&
+            finalBalls.map((ball, index) => (
+              <img
                 key={index}
-                disabled={disableButton}
-                onClick={() => responseHandler(index)}
-                className={`${basicButtonStyle} ${
-                  buttonClickedIndexGreen === index && greenButtonStyle
-                } ${buttonClickedIndexRed === index && redButtonStyle} mt-2`}
-              >
-                {optionToPrint}
-              </button>
-            );
-          })
-        )}
-      </div>
-      <div className='flex flex-col items-center mt-2'>
-        <p>{failOrSuccessfulMessage}</p>
-        <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
+                className='w-6 mr-2'
+                src={ball}
+                alt={`Ball ${index}`}
+              />
+            ))}
+        </div>
+        <div className='flex justify-between'>
+          <p className='font-bold text-gray-500 mx-3'>{`Tiempo restante: ${count}`}</p>
+          <p className='font-bold text-gray-500 mx-3'>{`${points} punto/s`}</p>
+          <p className='font-bold text-gray-500 mx-3'>{`${failures} fallo/s`}</p>
+        </div>
+        <div className='flex justify-center items-center my-8'>
+          <div className='mr-10'>
+            <button disabled={dragonDesactivatedButton} onClick={twoButtons}>
+              {!dragonDesactivatedButton && (
+                <div className='flex flex-col items-center'>
+                  <img
+                    className='w-14 rounded-full'
+                    src='/dragon.jpg'
+                    alt='Dragon'
+                  />
+                  <p>Dragón invocado</p>
+                </div>
+              )}
+            </button>
+          </div>
+
+          <div className='flex flex-col items-center justify-center '>
+            {!showOnlyTwoButtons ? (
+              <>
+                {responseOption.map((option, index) => {
+                  const optionToPrint = Object.values(option)[0];
+
+                  return (
+                    <button
+                      key={index}
+                      disabled={disableButton}
+                      onClick={() => responseHandler(index)}
+                      className={`${basicButtonStyle} ${
+                        buttonClickedIndexGreen === index && greenButtonStyle
+                      } ${
+                        buttonClickedIndexRed === index && redButtonStyle
+                      } mt-2`}
+                    >
+                      {optionToPrint}
+                    </button>
+                  );
+                })}
+              </>
+            ) : (
+              responseOption.map((option, index) => {
+                const optionToPrint = Object.values(option)[0];
+                return (
+                  <button
+                    key={index}
+                    disabled={disableButton}
+                    onClick={() => responseHandler(index)}
+                    className={`${basicButtonStyle} ${
+                      buttonClickedIndexGreen === index && greenButtonStyle
+                    } ${
+                      buttonClickedIndexRed === index && redButtonStyle
+                    } mt-2`}
+                  >
+                    {optionToPrint}
+                  </button>
+                );
+              })
+            )}
+          </div>
+        </div>
+        <div className='flex justify-around mt-2'>
+          <p className='font-bold text-gray-500'>{failOrSuccessfulMessage}</p>
+          <Button handler={buttonData}>
+            {character ? ' Siguiente Personaje' : 'Siguiente planeta'}
+          </Button>
+        </div>
       </div>
     </>
   );

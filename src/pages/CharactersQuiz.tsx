@@ -36,8 +36,10 @@ const CharactersQuiz = () => {
         <>
           {newGame ? (
             <>
-              <CharacterOrPlanet character={character} />
-              <ButtonPanel nextCharacterData={nextCharacterData} />
+              <div>
+                <CharacterOrPlanet character={character} />
+                <ButtonPanel nextCharacterData={nextCharacterData} />
+              </div>
             </>
           ) : (
             <>
