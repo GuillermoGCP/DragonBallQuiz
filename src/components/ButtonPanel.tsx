@@ -6,8 +6,8 @@ import {
   redButtonStyle,
   greenButtonStyle,
   basicButtonStyle,
-  ondaActivatedStyle,
-  ondaDesactivatedStyle,
+  // ondaActivatedStyle,
+  // ondaDesactivatedStyle,
 } from '../utils/styles';
 
 interface buttonPanelProps {
@@ -49,10 +49,17 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
 
   return (
     <>
-      <div>
-        {finalBalls.map((ball) => (
-          <img className='w-6 inline' src={ball} />
-        ))}
+      <div className='flex flex-col items-center justify-center'>
+        <div className='flex items-center justify-center mb-4'>
+          {finalBalls.map((ball, index) => (
+            <img
+              key={index}
+              className='w-6 mr-2'
+              src={ball}
+              alt={`Ball ${index}`}
+            />
+          ))}
+        </div>
         <p>{`Tiempo restante: ${count}`}</p>
         <p>{`Tienes ${points} puntos`}</p>
         <p>{`Tienes ${failures} fallos`}</p>
@@ -62,9 +69,10 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
           // }
           disabled={ondaDesactivatedButton}
           onClick={twoButtons}
+          className='relative'
         >
           {!ondaDesactivatedButton && (
-            <img className='w-16 rounded-full' src='/dragon.jpg' />
+            <img className='w-16 rounded-full' src='/dragon.jpg' alt='Dragon' />
           )}
         </button>
 
@@ -80,7 +88,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
                   onClick={() => responseHandler(index)}
                   className={`${basicButtonStyle} ${
                     buttonClickedIndexGreen === index && greenButtonStyle
-                  } ${buttonClickedIndexRed === index && redButtonStyle}`}
+                  } ${buttonClickedIndexRed === index && redButtonStyle} mt-2`}
                 >
                   {optionToPrint}
                 </button>
@@ -97,7 +105,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
                 onClick={() => responseHandler(index)}
                 className={`${basicButtonStyle} ${
                   buttonClickedIndexGreen === index && greenButtonStyle
-                } ${buttonClickedIndexRed === index && redButtonStyle}`}
+                } ${buttonClickedIndexRed === index && redButtonStyle} mt-2`}
               >
                 {optionToPrint}
               </button>
@@ -105,8 +113,10 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
           })
         )}
       </div>
-      <p>{failOrSuccessfulMessage}</p>
-      <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
+      <div className='flex flex-col items-center mt-2'>
+        <p>{failOrSuccessfulMessage}</p>
+        <Button handler={buttonData}>Siguiente Personaje</Button>{' '}
+      </div>
     </>
   );
 };
