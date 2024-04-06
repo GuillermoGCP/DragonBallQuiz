@@ -60,14 +60,31 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Estados y lógica para el botón del 50% (Onda Vital):
   const [showOnlyTwoButtons, setShowOnlyTwoButtons] =
     React.useState<boolean>(false);
-
   const [ondaDesactivatedButton, setOndaDesactivatedButton] =
     React.useState<boolean>(false);
-
   const twoButtons = () => {
     setShowOnlyTwoButtons(true);
     setOndaDesactivatedButton(true);
   };
+
+  //Lógica para activar el botón de onda vital tras siete aciertos consecutivos:
+  const [bonus, setBonus] = React.useState<number>(0);
+  if (ondaDesactivatedButton && bonus === 7) {
+    setOndaDesactivatedButton(false);
+    setBonus(0);
+  }
+
+  //Lógica para activar el dragón tras siete bolas conseguidas (siete aciertos consecutivos):
+  const allBalls = [
+    '/bola1.jpg',
+    '/bola2.jpg',
+    '/bola3.jpg',
+    '/bola4.jpg',
+    '/bola5.jpg',
+    '/bola6.jpg',
+    '/bola7.jpg',
+  ];
+  const finalBalls = allBalls.slice(0, bonus);
 
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
@@ -103,7 +120,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     return options.sort(() => Math.random() - 0.5);
   }, [characterName, planetName, character]);
 
-  //Lógica para el botón del 50% (Onda Vital): Modifico el array de respuestas y elimina la primera opción, dejando la segunda opción y la respuesta correcta:
+  //Lógica para el botón del 50% (Dragón): Modifico el array de respuestas y elimina la primera opción, dejando la segunda opción y la respuesta correcta:
   const firstOptionIndex = responseOption.findIndex(
     (option) => Object.keys(option)[0] === 'firstOption'
   );
@@ -113,6 +130,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
   //Contador inicial, al cargarse la página:
   React.useEffect(() => {
+    setBonus(0);
     setDisableButton(false);
     setDisabledNextButton('hidden');
     let counter = 30;
@@ -126,6 +144,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
         setDisabledNextButton('');
         setDisableButton(true);
         setResponse(`¡Se terminó el tiempo!`);
+        setBonus(0);
       }
     }, 1000);
     setInitialIntervalId(InitialInterval);
@@ -163,6 +182,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
         setDisabledNextButton('');
         setDisableButton(true);
         setResponse(`¡Se terminó el tiempo!`);
+        setBonus(0);
       }
     }, 1000);
     setIntervalId(interval);
@@ -174,6 +194,10 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       Object.values(responseOption[index])[0] === characterName ||
       Object.values(responseOption[index])[0] === planetName
     ) {
+      //Bonus:puntos para activar el bonus del botón del 50%
+      setBonus((previous) => previous + 1);
+
+      //Puntos acumulados del jugador
       let gamerPoints = points;
       gamerPoints++;
       setPoints(gamerPoints);
@@ -195,7 +219,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       setFailures(gamerFailures);
 
       //Cuando se termina el juego por haber fallado:
-      if (failures === 5) {
+      if (failures === 6) {
         setFinalScore(points);
         setResponse('Fin del juego');
         setNewGame(false);
@@ -211,6 +235,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
         }
         setResponse('Has fallado');
         setDisabledNextButton('');
+        setBonus(0);
         if (intervalId) {
           clearInterval(intervalId);
         }
@@ -237,6 +262,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     setShowOnlyTwoButtons,
     twoButtons,
     ondaDesactivatedButton,
+    finalBalls,
   };
 };
 export default useButtonPanel;
