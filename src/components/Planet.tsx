@@ -6,7 +6,7 @@ const CharacterOrPlanet = ({
 }: CharacterPlanetProps) => {
   return (
     <>
-      <div className=' planetMainContainer flex  flex-col items-center my-6 '>
+      <div className=' planetMainContainer flex  flex-col items-center my-6 lg:w-[420px]'>
         <img
           className='planetImage w-60 h-auto rounded-xl mb-6'
           src={characterOrPlanet.image}

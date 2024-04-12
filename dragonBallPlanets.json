@@ -4,7 +4,7 @@
     "name": "Namek",
     "isDestroyed": true,
     "description": "Planeta natal de los Namekianos. Escenario de importantes batallas y la obtención de las Dragon Balls de Namek.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/7/71/Namek_U7.png/revision/latest/scale-to-width-down/1000?cb=20200911203844&path-prefix=es",
     "deletedAt": null
   },
   {
@@ -12,7 +12,7 @@
     "name": "Tierra",
     "isDestroyed": false,
     "description": "También llamado Mundo del Dragón (Dragon World), es el planeta principal donde se desarrolla la serie de Dragon Ball.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/4/4c/Tierra_Dragon_Ball_Z.png/revision/latest?cb=20200828043118&path-prefix=es",
     "deletedAt": null
   },
   {
@@ -20,7 +20,7 @@
     "name": "Vegeta",
     "isDestroyed": true,
     "description": "Planeta natal de los Saiyans, destruido por Freezer. Anteriormente conocido como Planeta Plant.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/8/8a/Planeta_Vegeta_en_Dragon_Ball_Super_Broly.png/revision/latest/scale-to-width-down/1000?cb=20200825035935&path-prefix=es",
     "deletedAt": null
   },
   {
@@ -28,7 +28,7 @@
     "name": "Freezer No. 79",
     "isDestroyed": true,
     "description": "Planeta artificial utilizado por Freezer como base de operaciones y centro de clonación.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/f/ff/Planeta_Freeza_N%C2%BA_17_manga_a_color.png/revision/latest?cb=20200411214440&path-prefix=es",
     "deletedAt": null
   },
   {
@@ -36,7 +36,7 @@
     "name": "Kanassa",
     "isDestroyed": true,
     "description": "Planeta habitado por los Kanassans y conocido por la lucha entre Bardock y los habitantes del planeta.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/6/61/800px-PlanetKannasa.png/revision/latest?cb=20100107221513&path-prefix=es",
     "deletedAt": null
   },
   {
@@ -52,7 +52,7 @@
     "name": "Yardrat",
     "isDestroyed": false,
     "description": "Planeta de la técnica Instant Transmission, aprendida por Goku durante su estancia.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://static.wikia.nocookie.net/dragonball/images/b/b1/PlanetYardrat.png/revision/latest?cb=20100103162456&path-prefix=es",
     "deletedAt": null
   },
   {
