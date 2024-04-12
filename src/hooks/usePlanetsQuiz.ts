@@ -3,7 +3,7 @@ import React from 'react';
 import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
 
 const usePlanetQuiz = () => {
-  const endOfTheGame: string = 'Has terminado el juego';
+  const endOfTheGame: string = '¡Enorabuena, has terminado el juego!';
   const [IndexState, setIndexState] = React.useState<number[]>([]);
   const [newGame, setNewGame] = React.useState<boolean>(true);
 

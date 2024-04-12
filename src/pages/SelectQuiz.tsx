@@ -1,22 +1,38 @@
 import { Link } from 'react-router-dom';
-
+import '../assets/fonts.css';
 const SelectQuiz = () => {
   return (
     <>
-      <h1>Selecciona el juego</h1>
-      <p>
-        Solo podrás cometer 7 errores o estás perdido, pero contarás con la
-        ayuda del dragón mágico, que al activarlo, eliminará una de las opciones
-        erróneas. Para lograr tenerlo de nuevo disposible debes reunir las siete
-        bolas mágicas, respondiendo siete respuestas correctas consecutivas. Si
-        fallas, las bolas se irán de nuevo a distintas partes del planeta. Y
-        ojo, si se te acaba el tiempo, el dragón desaparecerá, así que úsalo
-        cuando sea necesario.
-      </p>
-      <Link to={'/dragonball-quiz/characters'}>Personajes de Dragon Ball</Link>
-      <Link to={'/dragonball-quiz/planets'}>
-        Planetas del universo Dragon Ball
-      </Link>
+      <div className='flex justify-center'>
+        <div className='w-[80vw] mt-12'>
+          <h1 className='font-[dragonBall] text-[#feb61b]'>Instrucciones</h1>
+          <p className='text-black font-thin'>
+            Solo podrás cometer 7 errores o estás perdido, pero contarás con la
+            ayuda del dragón mágico, que al activarlo, eliminará una de las
+            opciones erróneas. Para lograr tenerlo de nuevo disposible debes
+            reunir las siete bolas mágicas, respondiendo siete respuestas
+            correctas consecutivas. Si fallas, las bolas se irán de nuevo a
+            distintas partes del planeta. Y ojo, si se te acaba el tiempo, el
+            dragón desaparecerá, así que úsalo cuando sea necesario.
+          </p>
+          <div className='flex justify-center gap-16 items-center mt-8'>
+            <Link to={'/dragonball-quiz/characters'}>
+              <img
+                className='w-52 hover:scale-110 transition-transform'
+                src='/Goku.jpg'
+              />
+              <p className='font-[dragonBall]'>Personajes de Dragon Ball</p>
+            </Link>
+            <Link to={'/dragonball-quiz/planets'}>
+              <img
+                className='w-52 hover:scale-125 hover:rotate-180 transition-transform'
+                src='/planets.jpg'
+              />
+              <p className='font-[dragonBall] '>Planetas de Dragon Ball</p>
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

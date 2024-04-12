@@ -6,6 +6,7 @@ import Planet from '../components/Planet';
 import NewGameButton from '../components/NewGameButton';
 import ButtonPanel from '../components/ButtonPanel';
 import '../assets/landScapeStyles.css';
+import GameEnded from '../components/GameEnded';
 
 const PlanetsQuiz = () => {
   const {
@@ -33,24 +34,29 @@ const PlanetsQuiz = () => {
     numberOfQuestions: 20,
   };
 
+  const props = {
+    handler,
+    endOfTheGame,
+  };
+
   return (
-    <div className='flex justify-center'>
+    <div className='flex justify-center  items-stretch lg:mt-14 '>
       {planet !== undefined ? (
         <>
           {newGame ? (
-            <div className='planetQuizcontainer'>
+            <div className='planetQuizcontainer lg:flex items-center justify-around h-[567px]'>
               <Planet character={planet} />
               <ButtonPanel nextCharacterData={nextCharacterData} />
             </div>
           ) : (
-            <>
-              <NewGameButton handler={handler}>Nueva partida</NewGameButton>
+            <div className='flex flex-col items-center'>
               <FinalScore finalScoreData={finalScoreData} />
-            </>
+              <NewGameButton handler={handler}>Nueva partida</NewGameButton>
+            </div>
           )}
         </>
       ) : (
-        <p>{endOfTheGame}</p>
+        <GameEnded props={props} />
       )}
     </div>
   );

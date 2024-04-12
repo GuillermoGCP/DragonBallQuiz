@@ -2,7 +2,6 @@ import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import Landing from './pages/Landing';
 import Base from './pages/Base';
 import SelectQuiz from './pages/SelectQuiz';
 import PageNotFound from './pages/PageNotFound';
@@ -11,8 +10,6 @@ import PlanetsQuiz from './pages/PlanetsQuiz';
 import { ButtonPanelProvider } from './contexts/buttonPanelContext';
 
 const router = createBrowserRouter([
-  { path: '', element: <Landing /> },
-
   {
     path: '',
     element: <Base />,
