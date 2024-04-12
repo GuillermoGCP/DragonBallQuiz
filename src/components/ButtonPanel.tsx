@@ -2,6 +2,7 @@ import React from 'react';
 import useButtonPanel from '../hooks/useButtonPanel';
 import { CharacterData, PlanetsData } from '../types.d';
 import Button from './Button';
+import '../assets//landScapeStyles.css';
 import {
   redButtonStyle,
   greenButtonStyle,
@@ -47,41 +48,43 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
   const buttonData: buttonDataProps = { disabledNextButton, nextCharacter };
 
   return (
-    <>
-      <div className='bg-gradient-to-t from-[#e8a20a] to-white h-[44vh]'>
+    <main className='buttonPanel'>
+      <div className=' buttonPanelYellowBox bg-gradient-to-t from-[#e8a20a] to-white h-[50vh]'>
         <div className='h-6 flex justify-center'>
           {dragonDesactivatedButton &&
             finalBalls.map((ball, index) => (
               <img
                 key={index}
-                className='w-6 mr-2'
+                className='w-6 mr-2 '
                 src={ball}
                 alt={`Ball ${index}`}
               />
             ))}
         </div>
-        <div className='flex justify-between'>
-          <p className='font-bold text-gray-500 mx-3'>{`Tiempo restante: ${count}`}</p>
-          <p className='font-bold text-gray-500 mx-3'>{`${points} punto/s`}</p>
-          <p className='font-bold text-gray-500 mx-3'>{`${failures} fallo/s`}</p>
+        <div className='points flex justify-center'>
+          <p className='points font-bold text-gray-500 mx-3 '>{`Tiempo restante: ${count}`}</p>
+          <p className=' pointsfont-bold text-green-700 mx-3'>{`${points} punto/s`}</p>
+          <p className=' points font-bold text-[#b53434] mx-3 '>{`${failures} fallo/s`}</p>
         </div>
         <div className='flex justify-center items-center my-8'>
-          <div className='mr-10'>
+          <div className='mr-8'>
             <button disabled={dragonDesactivatedButton} onClick={twoButtons}>
               {!dragonDesactivatedButton && (
-                <div className='flex flex-col items-center'>
+                <div className='flex flex-col items-center ml-4'>
                   <img
-                    className='w-14 rounded-full'
-                    src='/dragon.jpg'
+                    className='w-24 dragon hover:scale-110 transition'
+                    src='/dragon.png'
                     alt='Dragon'
                   />
-                  <p>Dragón invocado</p>
+                  <p className='font-bold text-gray-500'>
+                    ¡Dragón mágico invocado!
+                  </p>
                 </div>
               )}
             </button>
           </div>
 
-          <div className='flex flex-col items-center justify-center '>
+          <div className='flex flex-col items-center justify-center mr-10 buttonBox'>
             {!showOnlyTwoButtons ? (
               <>
                 {responseOption.map((option, index) => {
@@ -124,14 +127,14 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
             )}
           </div>
         </div>
-        <div className='flex justify-around mt-2'>
+        <div className=' nextMessage flex flex-col items-center mt-2'>
           <p className='font-bold text-gray-500'>{failOrSuccessfulMessage}</p>
           <Button handler={buttonData}>
             {character ? ' Siguiente Personaje' : 'Siguiente planeta'}
           </Button>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 export default ButtonPanel;

@@ -1,0 +1,93 @@
+@media screen and (max-height: 450px) {
+  /*Estilos para ambos, character y planet*/
+  .container {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .points {
+    font-size: 13px;
+  }
+
+  .OptionButton {
+    width: 100px;
+    height: 70px;
+    margin: 5px;
+    font-size: 13px;
+    border-radius: 30px;
+  }
+
+  .buttonPanel {
+    height: 440px;
+    width: 450px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .buttonBox {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-left: -15px;
+    margin-bottom: 20px;
+  }
+
+  .buttonPanelYellowBox {
+    height: 300px;
+    width: 450px;
+    border-radius: 50px;
+  }
+
+  .dragon {
+    width: 50px;
+  }
+
+  .nextMessage {
+    margin-top: -35px;
+  }
+
+  /*Estilos para  character*/
+  .characterMainContainer {
+    height: 440px;
+    /* margin-top: 20px; */
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .characterDescription {
+    display: none;
+  }
+  .characterImage {
+    width: 150px;
+    max-height: 340px;
+  }
+
+  /*Estilos para planet*/
+
+  .planetQuizcontainer {
+    width: 95vw;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .planetMainContainer {
+    height: 440px;
+
+    display: flex;
+    justify-content: center;
+  }
+  .planetImage {
+    width: 150px;
+    max-height: 340px;
+  }
+
+  .planetDescription {
+    border: 1px solid gray;
+  }
+}

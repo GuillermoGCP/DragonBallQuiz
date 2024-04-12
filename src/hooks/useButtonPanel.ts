@@ -202,7 +202,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       let gamerPoints = points;
       gamerPoints++;
       setPoints(gamerPoints);
-      setResponse(`Has acertado`);
+      setResponse(`¡Has acertado!`);
       setDisableButton(true);
       setButtonClickedIndexGreen(index);
       setDisabledNextButton('');
@@ -234,7 +234,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
         if (initialIntervalId) {
           clearInterval(initialIntervalId);
         }
-        setResponse('Has fallado');
+        setResponse('¡Has fallado!');
         setDisabledNextButton('');
         setBonus(0);
         if (intervalId) {
