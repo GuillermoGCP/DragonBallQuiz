@@ -1,0 +1,8 @@
+@font-face {
+  font-family: dragonBall;
+  src: url('../assets/fonts/chinesedragon-webfont.woff') format('woff2');
+}
+@font-face {
+  font-family: dragonBall2;
+  src: url('../assets/fonts/dragon_ball-webfont.woff') format('woff2');
+}

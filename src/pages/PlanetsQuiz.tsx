@@ -2,9 +2,10 @@ import usePlanetsQuiz from '../hooks/usePlanetsQuiz';
 import FinalScore from '../components/FinalScore';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import React from 'react';
-import CharacterOrPlanet from '../components/CharacterOrPlanet';
+import Planet from '../components/Planet';
 import NewGameButton from '../components/NewGameButton';
 import ButtonPanel from '../components/ButtonPanel';
+import '../assets/landScapeStyles.css';
 
 const PlanetsQuiz = () => {
   const {
@@ -31,15 +32,16 @@ const PlanetsQuiz = () => {
     points: finalScore,
     numberOfQuestions: 20,
   };
+
   return (
-    <>
+    <div className='flex justify-center'>
       {planet !== undefined ? (
         <>
           {newGame ? (
-            <>
-              <CharacterOrPlanet character={planet} />
+            <div className='planetQuizcontainer'>
+              <Planet character={planet} />
               <ButtonPanel nextCharacterData={nextCharacterData} />
-            </>
+            </div>
           ) : (
             <>
               <NewGameButton handler={handler}>Nueva partida</NewGameButton>
@@ -50,7 +52,7 @@ const PlanetsQuiz = () => {
       ) : (
         <p>{endOfTheGame}</p>
       )}
-    </>
+    </div>
   );
 };
 export default PlanetsQuiz;

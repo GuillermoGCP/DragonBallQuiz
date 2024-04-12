@@ -1,10 +1,11 @@
-import CharacterOrPlanet from '../components/CharacterOrPlanet';
+import Character from '../components/Character';
 import useCharacterQuiz from '../hooks/useCharacterQuiz';
 import ButtonPanel from '../components/ButtonPanel';
 import FinalScore from '../components/FinalScore';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import React from 'react';
 import NewGameButton from '../components/NewGameButton';
+import '../assets/landScapeStyles.css';
 
 const CharactersQuiz = () => {
   const {
@@ -31,14 +32,14 @@ const CharactersQuiz = () => {
   };
   const handler = () => setNewGame(true);
   return (
-    <>
+    <div className='flex justify-center '>
       {character !== undefined ? (
         <>
           {newGame ? (
-            <>
-              <CharacterOrPlanet character={character} />
+            <div className='container'>
+              <Character character={character} />
               <ButtonPanel nextCharacterData={nextCharacterData} />
-            </>
+            </div>
           ) : (
             <>
               <NewGameButton handler={handler}>Nueva partida</NewGameButton>
@@ -49,7 +50,7 @@ const CharactersQuiz = () => {
       ) : (
         <p>{endOfTheGame}</p>
       )}
-    </>
+    </div>
   );
 };
 export default CharactersQuiz;
