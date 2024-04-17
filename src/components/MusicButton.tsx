@@ -20,8 +20,8 @@ const MusicButton = ({ state }: Props) => {
           className='w-8'
           src={
             isSongPlaying
-              ? '/src/assets/icons/nota.png'
-              : '/src/assets/icons/Sin-audio.png'
+              ? '/src/assets/icons/nota-musical.png'
+              : '/src/assets/icons/altavoz22.svg'
           }
           alt='iconos para indicar: con audio o sin audio'
         />

@@ -49,7 +49,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
 
   return (
     <main className='buttonPanel flex justify-center'>
-      <div className=' buttonPanelYellowBox bg-gradient-to-t from-[#e8a20a] to-white h-[46vh] w-[450px] sm:w-[545px] lg:w-[545px]'>
+      <div className=' buttonPanelYellowBox bg-gradient-to-t from-[#e8a20a] to-white h-[49vh] w-[440px] sm:w-[535px] lg:w-[535px]'>
         <div className='h-6 flex justify-center'>
           {dragonDesactivatedButton &&
             finalBalls.map((ball, index) => (

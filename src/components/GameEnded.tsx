@@ -9,6 +9,7 @@ const GameEnded = ({ props }: Props) => {
     <div className='mt-10'>
       <p className='text-center font-bold text-[#feb61b]'>{endOfTheGame}</p>
       <img
+        className='w-80'
         src='/Mr_Satan2.webp'
         alt='Imagen del señor Satán en gesto victorioso'
       />

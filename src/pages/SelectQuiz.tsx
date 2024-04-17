@@ -6,7 +6,7 @@ const SelectQuiz = () => {
   return (
     <>
       <div className='flex justify-center'>
-        <div className='w-[80vw] mt-12'>
+        <div className='w-[80vw] mt-8'>
           <h1 className='font-[dragonBall] text-[#feb61b]'>Instrucciones</h1>
           <p className='text-black font-thin'>
             Solo podrás cometer 7 errores o estás perdido, pero contarás con la
