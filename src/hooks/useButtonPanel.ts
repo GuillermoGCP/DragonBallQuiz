@@ -3,6 +3,7 @@ import dragonBallCharactersJson from '../../dragonBallCharacters.json';
 import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
 import { CharacterData, PlanetsData } from '../types.d';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
+import { MusicContext } from '../contexts/musicContext';
 
 type nextCharacterData = {
   setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
@@ -20,6 +21,8 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   const planetName = planet?.name;
 
   const { setFinalScore } = React.useContext(ButtonPanelContext);
+  const { initialSong, gameLost, setQuizPanel } =
+    React.useContext(MusicContext);
 
   //Estado para mostrar el contador:
   const [count, setCount] = React.useState(30);
@@ -57,25 +60,27 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Estado para almacenar y mostrar la puntuación del jugador:
   const [points, setPoints] = React.useState<number>(0);
 
-  //Estados y lógica para el botón del 50% (Onda Vital):
+  //Estados y lógica para el botón del 50% (Dragón):
   const [showOnlyTwoButtons, setShowOnlyTwoButtons] =
     React.useState<boolean>(false);
   const [ondaDesactivatedButton, setOndaDesactivatedButton] =
     React.useState<boolean>(false);
   const twoButtons = () => {
+    const usedDragon = new Audio('/dragon-utilizado.mp3');
+    usedDragon.play();
     setBonus(0);
     setShowOnlyTwoButtons(true);
     setOndaDesactivatedButton(true);
   };
 
-  //Lógica para activar el botón de onda vital tras siete aciertos consecutivos:
+  //Lógica para activar el dragón tras siete aciertos consecutivos:
   const [bonus, setBonus] = React.useState<number>(0);
   if (ondaDesactivatedButton && bonus === 7) {
     setOndaDesactivatedButton(false);
     setBonus(0);
+    const dragonInvoked = new Audio('/dragon-invocado.mp3');
+    dragonInvoked.play();
   }
-
-  //Lógica para activar el dragón tras siete bolas conseguidas (siete aciertos consecutivos):
   const allBalls = [
     '/bola1.jpg',
     '/bola2.jpg',
@@ -134,10 +139,11 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     setBonus(0);
     setDisableButton(false);
     setDisabledNextButton('hidden');
-    let counter = 30;
+    let counter = 10;
     const InitialInterval = setInterval(() => {
       counter--;
       setCount(counter);
+
       if (counter === 0) {
         setOndaDesactivatedButton(true);
         clearInterval(InitialInterval);
@@ -168,8 +174,11 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     //Desactivo el botón hasta que acabe el contador o se clique en alguna respuesta:
     setDisabledNextButton('hidden');
 
-    //Tras usar el botón del 50% (onda vital) en la siguiente ronda vuelven a aparecer las tres opciones:
+    //Tras usar el botón del 50% (dragón) en la siguiente ronda vuelven a aparecer las tres opciones:
     setShowOnlyTwoButtons(false);
+    //Sonido para pasar de personaje/planeta:
+    const cloudButton = new Audio('/nube.mp3');
+    cloudButton.play();
 
     //Activa el contador para la siguiente pregunta:
     let counter = 30;
@@ -190,6 +199,13 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   };
 
   //Handler del botón clicado:
+  if (ondaDesactivatedButton && bonus === 7) {
+    setOndaDesactivatedButton(false);
+    setBonus(0);
+    const dragonInvoked = new Audio('/dragon-invocado.mp3');
+    dragonInvoked.play();
+  }
+
   const responseHandler = (index: number) => {
     if (
       Object.values(responseOption[index])[0] === characterName ||
@@ -203,6 +219,17 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
       gamerPoints++;
       setPoints(gamerPoints);
       setResponse(`¡Has acertado!`);
+      //Sonido cuando aciertas:
+      const successButton = new Audio('/teleport.mp3');
+      const magicBall = new Audio('/bola-magica.mp3');
+      if (!ondaDesactivatedButton) {
+        successButton.play();
+      } else {
+        if (bonus < 6) {
+          magicBall.play();
+        }
+      }
+
       setDisableButton(true);
       setButtonClickedIndexGreen(index);
       setDisabledNextButton('');
@@ -221,6 +248,13 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
       //Cuando se termina el juego por haber fallado:
       if (failures === 6) {
+        //Música para cuando pierdes el juego:
+        gameLost.play();
+        initialSong.pause();
+
+        //No se muestra botón de música:
+        setQuizPanel(false);
+
         setFinalScore(points);
         setResponse('Fin del juego');
         setNewGame(false);
@@ -234,6 +268,9 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
         if (initialIntervalId) {
           clearInterval(initialIntervalId);
         }
+        //Sonido cuando fallas:
+        const failureButton = new Audio('/punch.mp3');
+        failureButton.play();
         setResponse('¡Has fallado!');
         setDisabledNextButton('');
         setBonus(0);
@@ -264,6 +301,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     twoButtons,
     ondaDesactivatedButton,
     finalBalls,
+    bonus,
   };
 };
 export default useButtonPanel;

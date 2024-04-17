@@ -1,5 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import MusicButton from '../components/MusicButton';
+import { MusicContext } from '../contexts/musicContext';
+import React from 'react';
 const Base = () => {
+  //Botón para la música
+  const { isSongPlaying, stopInitialSong, quizPanel } =
+    React.useContext(MusicContext);
+  const buttonProps = {
+    isSongPlaying,
+    stopInitialSong,
+  };
   return (
     <>
       <header className='flex justify-around border bg-[#FEB81C] '>
@@ -14,12 +24,8 @@ const Base = () => {
           className='w-20'
         />
       </header>
+      {quizPanel && <MusicButton state={buttonProps} />}
       <Outlet />
-      {/* <footer className='flex items-center justify-center border h-12'>
-        <p className='text-xs text-gray-600'>
-          Creado por Guillermo Cerviño 2024®
-        </p>
-      </footer> */}
     </>
   );
 };

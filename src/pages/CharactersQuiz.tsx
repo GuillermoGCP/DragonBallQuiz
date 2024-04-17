@@ -31,11 +31,14 @@ const CharactersQuiz = () => {
     points: finalScore,
     numberOfQuestions: 58,
   };
-  const handler = () => setNewGame(true);
+  const handler = () => {
+    setNewGame(true);
+  };
   const props = {
     handler,
     endOfTheGame,
   };
+
   return (
     <div className='flex justify-center  items-stretch lg:mt-14 '>
       {character !== undefined ? (
@@ -58,4 +61,5 @@ const CharactersQuiz = () => {
     </div>
   );
 };
+
 export default CharactersQuiz;
