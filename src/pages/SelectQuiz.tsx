@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
-import '../assets/fonts.css';
+import useSelectQuiz from '../hooks/useSelectQuiz';
+
 const SelectQuiz = () => {
+  const { navigateToCharacters, navigateToPlanets } = useSelectQuiz();
+
   return (
     <>
       <div className='flex justify-center'>
@@ -9,27 +11,29 @@ const SelectQuiz = () => {
           <p className='text-black font-thin'>
             Solo podrás cometer 7 errores o estás perdido, pero contarás con la
             ayuda del dragón mágico, que al activarlo, eliminará una de las
-            opciones erróneas. Para lograr tenerlo de nuevo disposible debes
+            opciones erróneas. Para lograr tenerlo de nuevo disponible debes
             reunir las siete bolas mágicas, respondiendo siete respuestas
             correctas consecutivas. Si fallas, las bolas se irán de nuevo a
             distintas partes del planeta. Y ojo, si se te acaba el tiempo, el
             dragón desaparecerá, así que úsalo cuando sea necesario.
           </p>
           <div className='flex justify-center gap-16 items-center mt-8'>
-            <Link to={'/dragonball-quiz/characters'}>
+            <button onClick={navigateToCharacters}>
               <img
                 className='w-52 hover:scale-110 transition-transform'
                 src='/Goku.jpg'
+                alt='Dibujo de Goku de pequeño'
               />
               <p className='font-[dragonBall]'>Personajes de Dragon Ball</p>
-            </Link>
-            <Link to={'/dragonball-quiz/planets'}>
+            </button>
+            <button onClick={navigateToPlanets}>
               <img
                 className='w-52 hover:scale-125 hover:rotate-180 transition-transform'
                 src='/planets.jpg'
+                alt='Dibujo de un planeta rojo de dibujos animados'
               />
               <p className='font-[dragonBall] '>Planetas de Dragon Ball</p>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

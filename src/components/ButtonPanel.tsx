@@ -76,6 +76,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
                     src='/dragon.png'
                     alt='Dragon'
                   />
+
                   <p className='font-bold text-gray-500'>
                     ¡Dragón mágico invocado!
                   </p>

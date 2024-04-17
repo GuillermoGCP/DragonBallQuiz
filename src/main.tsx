@@ -8,6 +8,7 @@ import PageNotFound from './pages/PageNotFound';
 import CharactersQuiz from './pages/CharactersQuiz';
 import PlanetsQuiz from './pages/PlanetsQuiz';
 import { ButtonPanelProvider } from './contexts/buttonPanelContext';
+import { MusicProvider } from './contexts/musicContext';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ButtonPanelProvider>
-      <RouterProvider router={router} />
-    </ButtonPanelProvider>
+    <MusicProvider>
+      <ButtonPanelProvider>
+        <RouterProvider router={router} />
+      </ButtonPanelProvider>
+    </MusicProvider>
   </React.StrictMode>
 );

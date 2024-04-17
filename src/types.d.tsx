@@ -34,3 +34,13 @@ export interface ButtonPanelContextType {
   finalScore: number;
   setFinalScore: React.Dispatch<React.SetStateAction<number>>;
 }
+export interface MusicContextType {
+  isSongPlaying: boolean;
+  setIsSongPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  quizPanel: boolean;
+  setQuizPanel: React.Dispatch<React.SetStateAction<boolean>>;
+  playInitialSong: () => void;
+  stopInitialSong: () => void;
+  initialSong: HTMLAudioElement;
+  gameLost: HTMLAudioElement;
+}
