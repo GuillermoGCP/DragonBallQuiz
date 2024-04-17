@@ -9,7 +9,7 @@ const MusicButton = ({ state }: Props) => {
   const { stopInitialSong, isSongPlaying } = state;
 
   return (
-    <>
+    <div className=' flex justify-end mr-6 mt-4'>
       <button
         value='Botón'
         onClick={() => {
@@ -17,6 +17,7 @@ const MusicButton = ({ state }: Props) => {
         }}
       >
         <img
+          className='w-8'
           src={
             isSongPlaying
               ? '/src/assets/icons/nota.png'
@@ -25,7 +26,7 @@ const MusicButton = ({ state }: Props) => {
           alt='iconos para indicar: con audio o sin audio'
         />
       </button>
-    </>
+    </div>
   );
 };
 export default MusicButton;
