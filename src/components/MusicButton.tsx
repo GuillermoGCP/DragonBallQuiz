@@ -7,6 +7,7 @@ type Props = {
 
 const MusicButton = ({ state }: Props) => {
   const { stopInitialSong, isSongPlaying } = state;
+  //Prueba deploy2:
 
   return (
     <div className=' flex justify-end mr-6 mt-4'>
