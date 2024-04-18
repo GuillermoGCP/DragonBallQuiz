@@ -12,16 +12,16 @@ const Base = () => {
   };
   return (
     <>
-      <header className='flex justify-around border bg-[#FEB81C] '>
+      <header className='baseHeader flex justify-around border bg-[#FEB81C] '>
         <img
-          className='w-52 '
+          className='dragonBallLetters w-52 '
           src='/Letras_cabecera.jpg'
           alt='Letras de dragon ball en color amarillo y rojo respectivamente y con una bola de una estrella entre las dos palabras'
         />
         <img
           src='/logo.jpg'
           alt='Imagen de la cabeza de un dragón sonriente al estilo Dragon Ball'
-          className='w-20'
+          className='logo w-20'
         />
       </header>
       {quizPanel && <MusicButton state={buttonProps} />}

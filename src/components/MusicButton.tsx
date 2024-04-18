@@ -10,7 +10,7 @@ const MusicButton = ({ state }: Props) => {
   //Prueba deploy2:
 
   return (
-    <div className=' flex justify-end mr-6 mt-4'>
+    <div className='musicIconContainer flex justify-end mr-6 mt-4'>
       <button
         value='Botón'
         onClick={() => {
@@ -18,12 +18,8 @@ const MusicButton = ({ state }: Props) => {
         }}
       >
         <img
-          className='w-8'
-          src={
-            isSongPlaying
-              ? '/src/assets/icons/nota-musical.png'
-              : '/src/assets/icons/altavoz22.svg'
-          }
+          className=' w-8'
+          src={isSongPlaying ? '/nota-musical.png' : '/altavoz22.svg'}
           alt=''
         />
       </button>
