@@ -160,7 +160,8 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     return () => clearInterval(InitialInterval);
   }, [setDisableButton, setResponse]);
 
-  //Botón del siguiente personaje:
+  //**************************************/
+  //BOTÓN DEL SIGUIENTE PERSONAJE/PLANETA:
   const nextCharacter = () => {
     //Guarda en el estado el index aleatorio, para eliminarlo del array de índices disponibles para la siguiente vuelta.
     setState((prevIndex) => [...prevIndex, randomIndex]);
@@ -197,8 +198,9 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     }, 1000);
     setIntervalId(interval);
   };
+  //***************************************/
 
-  //Handler del botón clicado:
+  //HANDLER DEL BOTÓN DE OPCIONES:
   if (ondaDesactivatedButton && bonus === 7) {
     setOndaDesactivatedButton(false);
     setBonus(0);
@@ -229,7 +231,6 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
           magicBall.play();
         }
       }
-
       setDisableButton(true);
       setButtonClickedIndexGreen(index);
       setDisabledNextButton('');
