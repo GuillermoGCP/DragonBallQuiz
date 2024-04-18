@@ -8,7 +8,9 @@ Aplicación web completamente responsive en la que podrás poner a prueba tus co
 ## tecnologías:
 
 React
+
 TypesScript
+
 Tailwindcss
 
 
