@@ -139,7 +139,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     setBonus(0);
     setDisableButton(false);
     setDisabledNextButton('hidden');
-    let counter = 10;
+    let counter = 30;
     const InitialInterval = setInterval(() => {
       counter--;
       setCount(counter);
