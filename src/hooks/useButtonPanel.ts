@@ -94,11 +94,17 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
+    //Genero los index aleatorios y compruebo que no se repiten:
+    const characterFirstOptionIndex = Math.floor(Math.random() * 58);
+    let characterSecondOptionIndex = Math.floor(Math.random() * 58);
+    while (characterFirstOptionIndex === characterSecondOptionIndex) {
+      characterSecondOptionIndex = Math.floor(Math.random() * 58);
+    }
+    //Los asigno al array de personajes/planetas:
     let firstOption;
     character
       ? (firstOption = {
-          firstOption:
-            dragonBallCharactersJson[Math.floor(Math.random() * 29)].name,
+          firstOption: dragonBallCharactersJson[characterFirstOptionIndex].name,
         })
       : (firstOption = {
           firstOption:
@@ -109,7 +115,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
     character
       ? (secondOption = {
           secondOption:
-            dragonBallCharactersJson[Math.floor(Math.random() * 29 + 29)].name,
+            dragonBallCharactersJson[characterSecondOptionIndex].name,
         })
       : (secondOption = {
           secondOption:
