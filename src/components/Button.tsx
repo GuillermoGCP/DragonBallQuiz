@@ -11,7 +11,7 @@ const Button = ({ handler, children }: button) => {
   const { nextCharacter, disabledNextButton } = handler;
   return (
     <button
-      className={`font-bold text-gray-500 ${disabledNextButton} `}
+      className={`font-bold text-gray-500 text-sm sm:text-lg ${disabledNextButton} `}
       type='submit'
       onClick={nextCharacter}
     >
