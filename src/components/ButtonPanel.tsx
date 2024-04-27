@@ -128,7 +128,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
             )}
           </div>
         </div>
-        <div className=' nextMessage flex flex-col items-center mt-2'>
+        <div className=' nextMessage flex flex-col items-center '>
           <p className='font-bold text-gray-500 text-sm sm:text-lg'>
             {failOrSuccessfulMessage}
           </p>

@@ -9,6 +9,17 @@ import '../assets/landScapeStyles.css';
 import GameEnded from '../components/GameEnded';
 
 const PlanetsQuiz = () => {
+  //Lógica para cuando se recargue la página.
+  window.addEventListener('beforeunload', function (event) {
+    event.preventDefault();
+    window.location.href = '/';
+  });
+
+  window.onload = function () {
+    if (performance.navigation.type === 1) {
+      window.location.href = '/';
+    }
+  };
   const {
     setIndexState,
     planet,
