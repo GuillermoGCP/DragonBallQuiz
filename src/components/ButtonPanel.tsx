@@ -62,7 +62,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
             ))}
         </div>
         <div className='points flex justify-center'>
-          <p className='points font-bold text-gray-500 mx-3 '>{`Tiempo restante: ${count}`}</p>
+          <p className='points font-bold text-gray-500 mx-3 '>{`Tiempo: ${count}`}</p>
           <p className=' pointsfont-bold text-green-700 mx-3'>{`${points} punto/s`}</p>
           <p className=' points font-bold text-[#b53434] mx-3 '>{`${failures} fallo/s`}</p>
         </div>
@@ -78,7 +78,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
                   />
 
                   <p className='font-bold text-gray-500'>
-                    ¡Dragón mágico invocado!
+                    ¡Activa el dragón mágico!
                   </p>
                 </div>
               )}
