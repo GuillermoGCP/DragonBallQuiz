@@ -95,11 +95,12 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
     //Genero los index aleatorios y compruebo que no se repiten:
-    const characterFirstOptionIndex = Math.floor(Math.random() * 58);
-    let characterSecondOptionIndex = Math.floor(Math.random() * 58);
+    const characterFirstOptionIndex = Math.floor(Math.random() * 29);
+    let characterSecondOptionIndex = Math.floor(Math.random() * 29 + 29);
     while (characterFirstOptionIndex === characterSecondOptionIndex) {
-      characterSecondOptionIndex = Math.floor(Math.random() * 58);
+      characterSecondOptionIndex = Math.floor(Math.random() * 58 - 12);
     }
+
     //Los asigno al array de personajes/planetas:
     let firstOption;
     character
