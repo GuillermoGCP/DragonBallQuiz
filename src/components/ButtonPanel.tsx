@@ -48,7 +48,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
   const buttonData: buttonDataProps = { disabledNextButton, nextCharacter };
 
   return (
-    <main className='buttonPanel flex justify-center h-[80%]'>
+    <main className='buttonPanel flex justify-center h-[77%]'>
       <div className='buttonPanelYellowBox yellowBox bg-gradient-to-t from-[#e8a20a] to-white h-[100%] w-[440px] sm:w-[535px] lg:w-[535px]'>
         <div className='h-6 flex justify-center'>
           {dragonDesactivatedButton &&
@@ -129,9 +129,7 @@ const ButtonPanel = ({ nextCharacterData }: buttonPanelProps) => {
           </div>
         </div>
         <div className=' nextMessage flex flex-col items-center '>
-          <p className='font-bold text-gray-500 text-sm sm:text-lg'>
-            {failOrSuccessfulMessage}
-          </p>
+          <p className='font-bold text-gray-500 '>{failOrSuccessfulMessage}</p>
           <Button handler={buttonData}>
             {character ? ' Siguiente Personaje' : 'Siguiente planeta'}
           </Button>
