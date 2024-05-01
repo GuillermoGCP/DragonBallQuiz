@@ -4,7 +4,13 @@ import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
 
 const usePlanetQuiz = () => {
   const endOfTheGame: string = '¡Enorabuena, has terminado el juego!';
+
+  //Estado para disparar el final del juego, cuando no hay más preguntas:
+  const [gameEndedState, setGameEndedState] = React.useState(false);
+
   const [IndexState, setIndexState] = React.useState<number[]>([]);
+
+  //Estado para disparar los componentes del juego, o de la página de puntuación, tras haber perdido:
   const [newGame, setNewGame] = React.useState<boolean>(true);
 
   //Array de índices disponibles para los personajes, tras eliminar las coincidencias con el estado:
@@ -30,6 +36,8 @@ const usePlanetQuiz = () => {
     endOfTheGame,
     newGame,
     setNewGame,
+    gameEndedState,
+    setGameEndedState,
   };
 };
 export default usePlanetQuiz;

@@ -7,6 +7,8 @@ import React from 'react';
 import NewGameButton from '../components/NewGameButton';
 import '../assets/landScapeStyles.css';
 import GameEnded from '../components/GameEnded';
+import { nextCharacterData } from '../types.d';
+import dragonBallCharactersJson from '../../dragonBallCharacters.json';
 
 const CharactersQuiz = () => {
   //Lógica para cuando se recargue la página.
@@ -28,32 +30,46 @@ const CharactersQuiz = () => {
     endOfTheGame,
     setNewGame,
     newGame,
+    gameEndedState,
+    setGameEndedState,
   } = useCharacterQuiz();
 
-  const nextCharacterData = {
+  const nextCharacterData: nextCharacterData = {
     setState: setIndexState,
     setNewGame,
     newGame,
     randomIndex,
     character,
+    setGameEndedState,
   };
   const { finalScore } = React.useContext(ButtonPanelContext);
 
-  const finalScoreData = {
+  interface finalScoreData {
+    points: number;
+    numberOfQuestions: number;
+  }
+  const finalScoreData: finalScoreData = {
     points: finalScore,
-    numberOfQuestions: 58,
+    numberOfQuestions: dragonBallCharactersJson.length,
   };
   const handler = () => {
     setNewGame(true);
   };
-  const props = {
+
+  interface props {
+    handler: () => void;
+    endOfTheGame: string;
+    finalScoreData: finalScoreData;
+  }
+  const props: props = {
     handler,
     endOfTheGame,
+    finalScoreData,
   };
 
   return (
     <div className='flex justify-center  items-stretch lg:mt-14 '>
-      {character !== undefined ? (
+      {!gameEndedState ? (
         <>
           {newGame ? (
             <div className='container  lg:flex items-center justify-around h-[567px]'>

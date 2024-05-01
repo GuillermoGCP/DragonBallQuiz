@@ -7,6 +7,7 @@ import NewGameButton from '../components/NewGameButton';
 import ButtonPanel from '../components/ButtonPanel';
 import '../assets/landScapeStyles.css';
 import GameEnded from '../components/GameEnded';
+import { nextCharacterData } from '../types.d';
 
 const PlanetsQuiz = () => {
   //Lógica para cuando se recargue la página.
@@ -27,32 +28,45 @@ const PlanetsQuiz = () => {
     endOfTheGame,
     setNewGame,
     newGame,
+    gameEndedState,
+    setGameEndedState,
   } = usePlanetsQuiz();
 
   const handler = () => setNewGame(true);
 
-  const nextCharacterData = {
+  const nextCharacterData: nextCharacterData = {
     setState: setIndexState,
     setNewGame,
-    newGame,
     randomIndex,
     planet,
+    setGameEndedState,
+    newGame,
   };
   const { finalScore } = React.useContext(ButtonPanelContext);
 
-  const finalScoreData = {
+  interface finalScoreData {
+    points: number;
+    numberOfQuestions: number;
+  }
+  const finalScoreData: finalScoreData = {
     points: finalScore,
     numberOfQuestions: 20,
   };
 
-  const props = {
+  interface props {
+    handler: () => void;
+    endOfTheGame: string;
+    finalScoreData: finalScoreData;
+  }
+  const props: props = {
     handler,
     endOfTheGame,
+    finalScoreData,
   };
 
   return (
     <div className='flex justify-center  items-stretch lg:mt-14 '>
-      {planet !== undefined ? (
+      {!gameEndedState ? (
         <>
           {newGame ? (
             <div className='planetQuizcontainer lg:flex items-center justify-around h-[567px]'>
@@ -67,7 +81,9 @@ const PlanetsQuiz = () => {
           )}
         </>
       ) : (
-        <GameEnded props={props} />
+        <>
+          <GameEnded props={props} />
+        </>
       )}
     </div>
   );

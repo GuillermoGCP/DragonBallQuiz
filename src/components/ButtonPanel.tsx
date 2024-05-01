@@ -1,6 +1,5 @@
-import React from 'react';
 import useButtonPanel from '../hooks/useButtonPanel';
-import { CharacterData, PlanetsData } from '../types.d';
+import { nextCharacterData } from '../types.d';
 import Button from './Button';
 import '../assets/landScapeStyles.css';
 import {
@@ -10,14 +9,7 @@ import {
 } from '../utils/styles';
 
 interface buttonPanelProps {
-  nextCharacterData: {
-    newGame: boolean;
-    setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
-    setState: React.Dispatch<React.SetStateAction<number[]>>;
-    randomIndex: number;
-    character?: CharacterData;
-    planet?: PlanetsData;
-  };
+  nextCharacterData: nextCharacterData;
 }
 
 interface buttonDataProps {

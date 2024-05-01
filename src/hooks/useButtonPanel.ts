@@ -1,22 +1,20 @@
 import React from 'react';
 import dragonBallCharactersJson from '../../dragonBallCharacters.json';
 import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
-import { CharacterData, PlanetsData } from '../types.d';
+import { nextCharacterData } from '../types.d';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import { MusicContext } from '../contexts/musicContext';
 import { generateUniqueIndex } from '../services/functions';
 
-type nextCharacterData = {
-  setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
-  setState: React.Dispatch<React.SetStateAction<number[]>>;
-  randomIndex: number;
-  character?: CharacterData;
-  planet?: PlanetsData;
-};
-
 const useButtonPanel = (nextCharacterData: nextCharacterData) => {
-  const { setState, randomIndex, character, planet, setNewGame } =
-    nextCharacterData;
+  const {
+    setState,
+    randomIndex,
+    character,
+    planet,
+    setNewGame,
+    setGameEndedState,
+  } = nextCharacterData;
 
   const characterName = character?.name;
   const planetName = planet?.name;
@@ -212,6 +210,26 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //***************************************/
 
   //HANDLER DEL BOTÓN DE OPCIONES:
+
+  //Para disparar el final del juego, cuando ya no hay más planetas o personajes:
+  if (planet) {
+    if (failures + points === dragonBallPlanetsJson.length) {
+      setFinalScore(points);
+      setGameEndedState && setGameEndedState(true);
+      const GameEndedMusic = new Audio('/FinalDelJuego.mp3');
+      GameEndedMusic.play();
+    }
+  }
+  if (character) {
+    if (failures + points === dragonBallCharactersJson.length) {
+      setFinalScore(points);
+      setGameEndedState && setGameEndedState(true);
+      const GameEndedMusic = new Audio('/FinalDelJuego.mp3');
+      GameEndedMusic.play();
+    }
+  }
+
+  //Para invocar al dragón cuando tengas las siete bolas mágicas:
   if (ondaDesactivatedButton && bonus === 7) {
     setOndaDesactivatedButton(false);
     setBonus(0);
@@ -266,7 +284,6 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
 
         //No se muestra botón de música:
         setQuizPanel(false);
-
         setFinalScore(points);
         setResponse('Fin del juego');
         setNewGame(false);

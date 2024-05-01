@@ -44,3 +44,14 @@ export interface MusicContextType {
   initialSong: HTMLAudioElement;
   gameLost: HTMLAudioElement;
 }
+
+//Props que se le pasan al botón next:
+export interface nextCharacterData {
+  setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
+  setState: React.Dispatch<React.SetStateAction<number[]>>;
+  randomIndex: number;
+  character?: CharacterData;
+  planet?: PlanetsData;
+  setGameEndedState?: React.Dispatch<React.SetStateAction<boolean>>;
+  newGame: boolean;
+}

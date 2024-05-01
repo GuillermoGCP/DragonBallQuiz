@@ -1,6 +1,6 @@
 /* CHARACTER QUIZ*/
 
-//Selecciona un índice aleatorio:
+//Selecciona un índice aleatorio de un array de números:
 export function shuffleArray(array: number[]): number[] {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -16,6 +16,7 @@ export const deleteIndex = (state: number[], jsonLength: number) => {
   return availableIndex;
 };
 
+//Generar un número aleatorio y evitar que se repita con uno previamente calculado:
 export function generateUniqueIndex(dataLength: number, previousIndex: number) {
   let newIndex = Math.floor(Math.random() * dataLength);
   while (newIndex === previousIndex) {
