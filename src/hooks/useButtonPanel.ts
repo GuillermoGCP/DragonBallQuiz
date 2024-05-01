@@ -4,6 +4,7 @@ import dragonBallPlanetsJson from '../../dragonBallPlanets.json';
 import { CharacterData, PlanetsData } from '../types.d';
 import { ButtonPanelContext } from '../contexts/buttonPanelContext';
 import { MusicContext } from '../contexts/musicContext';
+import { generateUniqueIndex } from '../services/functions';
 
 type nextCharacterData = {
   setNewGame: React.Dispatch<React.SetStateAction<boolean>>;
@@ -95,12 +96,17 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Opciones de los botones, dos respuestas aleatorias y la correcta:
   const responseOption = React.useMemo(() => {
     //Genero los index aleatorios y compruebo que no se repiten:
-    const characterFirstOptionIndex = Math.floor(Math.random() * 29);
-    let characterSecondOptionIndex = Math.floor(Math.random() * 29 + 29);
-    while (characterFirstOptionIndex === characterSecondOptionIndex) {
-      characterSecondOptionIndex = Math.floor(Math.random() * 58 - 12);
-    }
+    const characterFirstOptionIndex = Math.floor(Math.random() * 58);
+    const characterSecondOptionIndex = generateUniqueIndex(
+      58,
+      characterFirstOptionIndex
+    );
 
+    const planetFirstOptionIndex: number = Math.floor(Math.random() * 20);
+    const planetSecondOptionIndex = generateUniqueIndex(
+      20,
+      planetFirstOptionIndex
+    );
     //Los asigno al array de personajes/planetas:
     let firstOption;
     character
@@ -108,8 +114,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
           firstOption: dragonBallCharactersJson[characterFirstOptionIndex].name,
         })
       : (firstOption = {
-          firstOption:
-            dragonBallPlanetsJson[Math.floor(Math.random() * 10)].name,
+          firstOption: dragonBallPlanetsJson[planetFirstOptionIndex].name,
         });
 
     let secondOption;
@@ -119,8 +124,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
             dragonBallCharactersJson[characterSecondOptionIndex].name,
         })
       : (secondOption = {
-          secondOption:
-            dragonBallPlanetsJson[Math.floor(Math.random() * 10 + 10)].name,
+          secondOption: dragonBallPlanetsJson[planetSecondOptionIndex].name,
         });
 
     let correctAnswer;

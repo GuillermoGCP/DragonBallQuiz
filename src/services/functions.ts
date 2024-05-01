@@ -15,3 +15,11 @@ export const deleteIndex = (state: number[], jsonLength: number) => {
   const availableIndex = allIndex.filter((index) => !state.includes(index));
   return availableIndex;
 };
+
+export function generateUniqueIndex(dataLength: number, previousIndex: number) {
+  let newIndex = Math.floor(Math.random() * dataLength);
+  while (newIndex === previousIndex) {
+    newIndex = Math.floor(Math.random() * dataLength);
+  }
+  return newIndex;
+}
