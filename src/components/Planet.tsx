@@ -7,11 +7,13 @@ const CharacterOrPlanet = ({
   return (
     <>
       <div className=' planetMainContainer flex  flex-col items-center my-6 lg:w-[420px]'>
-        <img
-          className='planetImage w-60 h-auto rounded-xl mb-6'
-          src={characterOrPlanet.image}
-        />
-        <div className=' planetDescription w-4/6 border p-5'>
+        <div className='h-48 lg:h-auto'>
+          <img
+            className='planetImage w-auto h-full object-cover mb-6 lg:w-80 '
+            src={characterOrPlanet.image}
+          />
+        </div>
+        <div className=' planetDescription hidden w-4/ p-5 xl:block'>
           <p className={'flex justify-center text-gray-500 text-sm'}>
             {characterOrPlanet.description}
           </p>

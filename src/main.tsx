@@ -7,9 +7,9 @@ import SelectQuiz from './pages/SelectQuiz';
 import PageNotFound from './pages/PageNotFound';
 import CharactersQuiz from './pages/CharactersQuiz';
 // import PlanetsQuiz from './pages/PlanetsQuiz';
-import UnderConstructionPage from './pages/UnderConstructionPage';
 import { ButtonPanelProvider } from './contexts/buttonPanelContext';
 import { MusicProvider } from './contexts/musicContext';
+import PlanetsQuiz from './pages/PlanetsQuiz';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
       { path: '/', element: <SelectQuiz /> },
       { path: 'dragonball-quiz', element: <SelectQuiz /> },
       { path: 'dragonball-quiz/characters', element: <CharactersQuiz /> },
-      { path: 'dragonball-quiz/planets', element: <UnderConstructionPage /> },
+      { path: 'dragonball-quiz/planets', element: <PlanetsQuiz /> },
       { path: '*', element: <PageNotFound /> },
     ],
   },

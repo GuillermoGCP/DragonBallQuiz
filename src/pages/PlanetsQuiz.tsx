@@ -60,7 +60,7 @@ const PlanetsQuiz = () => {
               <ButtonPanel nextCharacterData={nextCharacterData} />
             </div>
           ) : (
-            <div className='flex flex-col items-center'>
+            <div className='gameEndedPage flex flex-col items-center'>
               <FinalScore finalScoreData={finalScoreData} />
               <NewGameButton handler={handler}>Nueva partida</NewGameButton>
             </div>

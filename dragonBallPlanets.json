@@ -3,8 +3,8 @@
     "id": 1,
     "name": "Namek",
     "isDestroyed": true,
-    "description": "Planeta natal de los Namekianos. Escenario de importantes batallas y la obtención de las Dragon Balls de Namek.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/7/71/Namek_U7.png/revision/latest/scale-to-width-down/1000?cb=20200911203844&path-prefix=es",
+    "description": "Planeta natal de los Namekianos.",
+    "image": "https://dragonball-api.com/planetas/Namek_U7.webp",
     "deletedAt": null
   },
   {
@@ -12,15 +12,15 @@
     "name": "Tierra",
     "isDestroyed": false,
     "description": "También llamado Mundo del Dragón (Dragon World), es el planeta principal donde se desarrolla la serie de Dragon Ball.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/4/4c/Tierra_Dragon_Ball_Z.png/revision/latest?cb=20200828043118&path-prefix=es",
+    "image": "https://dragonball-api.com/planetas/Tierra_Dragon_Ball_Z.webp",
     "deletedAt": null
   },
   {
     "id": 3,
     "name": "Vegeta",
     "isDestroyed": true,
-    "description": "Planeta natal de los Saiyans, destruido por Freezer. Anteriormente conocido como Planeta Plant.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/8/8a/Planeta_Vegeta_en_Dragon_Ball_Super_Broly.png/revision/latest/scale-to-width-down/1000?cb=20200825035935&path-prefix=es",
+    "description": "Conocido como planeta Plant antes del fin de la Guerra Saiyan-tsufruiana en el año 730, es un planeta rocoso ficticio de la serie de manga y anime Dragon Ball",
+    "image": "https://dragonball-api.com/planetas/Planeta_Vegeta_en_Dragon_Ball_Super_Broly.webp",
     "deletedAt": null
   },
   {
@@ -28,15 +28,15 @@
     "name": "Freezer No. 79",
     "isDestroyed": true,
     "description": "Planeta artificial utilizado por Freezer como base de operaciones y centro de clonación.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/f/ff/Planeta_Freeza_N%C2%BA_17_manga_a_color.png/revision/latest?cb=20200411214440&path-prefix=es",
+    "image": "https://dragonball-api.com/planetas/PlanetaFreezer.webp",
     "deletedAt": null
   },
   {
     "id": 5,
     "name": "Kanassa",
     "isDestroyed": true,
-    "description": "Planeta habitado por los Kanassans y conocido por la lucha entre Bardock y los habitantes del planeta.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/6/61/800px-PlanetKannasa.png/revision/latest?cb=20100107221513&path-prefix=es",
+    "description": "Conocido por la lucha entre Bardock y los habitantes del planeta.",
+    "image": "https://dragonball-api.com/planetas/800px-PlanetKannasa.webp",
     "deletedAt": null
   },
   {
@@ -44,7 +44,7 @@
     "name": "Monmar",
     "isDestroyed": false,
     "description": "Planeta donde Gohan y Krillin encontraron las Dragon Balls para revivir a sus amigos durante la Saga de Namek.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://dragonball-api.com/planetas/monmar.webp",
     "deletedAt": null
   },
   {
@@ -52,15 +52,15 @@
     "name": "Yardrat",
     "isDestroyed": false,
     "description": "Planeta de la técnica Instant Transmission, aprendida por Goku durante su estancia.",
-    "image": "https://static.wikia.nocookie.net/dragonball/images/b/b1/PlanetYardrat.png/revision/latest?cb=20100103162456&path-prefix=es",
+    "image": "https://dragonball-api.com/planetas/PlanetYardrat.webp",
     "deletedAt": null
   },
   {
     "id": 11,
     "name": "Kaiō del Norte",
     "isDestroyed": false,
-    "description": "Se encuentra al final del largo Camino de la Serpiente. ",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Se encuentra al final del largo Camino de la Serpiente.",
+    "image": "https://dragonball-api.com/planetas/Planeta_del_Kaio_del_Norte.webp",
     "deletedAt": null
   },
   {
@@ -68,23 +68,23 @@
     "name": "Makyo",
     "isDestroyed": false,
     "description": "Es un planeta y la fuente de alimentación de todos los malévolos, especialmente Garlic Jr., que solo aparece durante el Arco de Garlic Jr. de Dragon Ball Z.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://dragonball-api.com/planetas/Makyo_Star.webp",
     "deletedAt": null
   },
   {
     "id": 14,
     "name": "Babari",
     "isDestroyed": false,
-    "description": "Planeta  telúrico del Universo 10 donde residen los babarianos, hizo su primera aparición en el episodio 54 de Dragon Ball Super.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es un planeta telúrico del Universo 10, hizo su primera aparición en el episodio 54 de Dragon Ball Super. Es donde Tarble, el hermano de Vegeta, se refugió.",
+    "image": "https://dragonball-api.com/planetas/Planeta_Babari.webp",
     "deletedAt": null
   },
   {
     "id": 15,
     "name": "Tsufur (Universo 6)",
     "isDestroyed": false,
-    "description": "Planeta natal del Dr. Raichi.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Planeta natal de la raza a la que pertenecía el Dr. Raichi.",
+    "image": "https://dragonball-api.com/planetas/tsufur.webp",
     "deletedAt": null
   },
   {
@@ -92,71 +92,71 @@
     "name": "Desconocido",
     "isDestroyed": false,
     "description": "Sin informacion",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "image": "https://dragonball-api.com/planetas/tsufur.webp",
     "deletedAt": null
   },
   {
     "id": 18,
     "name": "Otro Mundo",
     "isDestroyed": false,
-    "description": "Es donde los personajes van cuando mueren, y también donde residen las deidades superiores del universo.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "En contraparte al Mundo de los vivos, es, en Dragon Ball, la versión del mundo de los muertos.",
+    "image": "https://dragonball-api.com/planetas/otro mundo.webp",
     "deletedAt": null
   },
   {
     "id": 19,
     "name": "Planeta de Bills ",
     "isDestroyed": false,
-    "description": "Es un cuerpo celeste ubicado dentro del mundo de los vivos del Universo 7, el cual aparece por primera vez en la película Dragon Ball Z: La Batalla de los Dioses.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Cuerpo celeste ubicado dentro del mundo de los vivos del Universo 7, el cual aparece por primera vez en la película Dragon Ball Z: La Batalla de los Dioses.",
+    "image": "https://dragonball-api.com/planetas/Templo_de_Bills2.webp",
     "deletedAt": null
   },
   {
     "id": 20,
     "name": "Planeta del Gran Kaio",
     "isDestroyed": false,
-    "description": "Es donde se organiza el Torneo de Artes Marciales del Otro Mundo en honor a la muerte del Kaio del Norte (Kaito), donde participan guerreros poderosos.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es donde se organiza el Torneo de Artes Marciales del Otro Mundo",
+    "image": "https://dragonball-api.com/planetas/Planetadaikaiosama.webp",
     "deletedAt": null
   },
   {
     "id": 21,
     "name": "Nucleo del Mundo",
     "isDestroyed": false,
-    "description": "Es el planeta nativo de toda la especie nucleica, del cual surgen los benévolos Kaio y Kaio-shin, así como los malévolos Makaio, Makaio-shin y Dioses Demoníacos en contrapartida.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es el planeta nativo Kaio y Kaio-shin, así como los malévolos Makaio, Makaio-shin y Dioses Demoníacos en contrapartida.",
+    "image": "https://dragonball-api.com/planetas/nucleo_mundo.webp",
     "deletedAt": null
   },
   {
     "id": 22,
     "name": "Planeta sagrado",
     "isDestroyed": false,
-    "description": "Es el planeta localizado en el Reino Kaio-shin donde residen los Kaio-shin del Universo 7. No debe ser confundido con el Núcleo del Mundo.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es el planeta localizado en el Reino Kaio-shin donde residen los Kaio-shin del Universo 7",
+    "image": "https://dragonball-api.com/planetas/Planeta_Sagrado.webp",
     "deletedAt": null
   },
   {
     "id": 23,
     "name": "Nuevo Planeta Tsufrui",
     "isDestroyed": false,
-    "description": "Vegeta Baby, por medio de las Esferas del Dragón Definitivas, restaura el Planeta Plant en la órbita de la Tierra.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "El Nuevo Planeta Plant en la órbita de la Tierra.",
+    "image": "https://dragonball-api.com/planetas/Nuevo_planeta_plant.webp",
     "deletedAt": null
   },
   {
     "id": 24,
-    "name": "Templo móvil",
+    "name": "Templo Rey de Todo",
     "isDestroyed": false,
-    "description": "Allí residen los tronos de los dos Reyes de Todo en el Lugar de Supervivencia en Dragon Ball Super.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es un templo móvil en el cual reside los tronos de los dos Reyes de Todo en el Lugar de Supervivencia en Dragon Ball Super.",
+    "image": "https://dragonball-api.com/planetas/Trono_del_Rey_de_Todo.webp",
     "deletedAt": null
   },
   {
     "id": 25,
     "name": "Universo 11",
     "isDestroyed": false,
-    "description": "Es es gemelo del Universo 2 y el lugar de origen de las Tropas del Orgullo.",
-    "image": "https://i.pinimg.com/564x/48/0c/41/480c4179009a7b87787211cc65599d41.jpg",
+    "description": "Es el undécimo de los doce universos existentes actualmente en el mundo de Dragon Ball. Este es gemelo del Universo 2 y el lugar de origen de las Tropas del Orgullo.",
+    "image": "https://dragonball-api.com/planetas/Universo_11.webp",
     "deletedAt": null
   }
 ]
