@@ -33,6 +33,9 @@ const useSelectQuiz = () => {
       setIsSongPlaying(false);
     };
     initialSong.addEventListener('ended', handleSongEnded);
+    return () => {
+      initialSong.removeEventListener('ended', handleSongEnded);
+    };
   }, [initialSong, setIsSongPlaying]);
 
   return {
