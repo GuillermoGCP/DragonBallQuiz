@@ -13,4 +13,12 @@ TypesScript
 
 Tailwindcss
 
+## Tests
+
+Para ejecutar las pruebas unitarias, utiliza el siguiente comando:
+
+```bash
+npm test
+```
+
 
