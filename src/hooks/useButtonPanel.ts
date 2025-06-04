@@ -43,7 +43,7 @@ const useButtonPanel = (nextCharacterData: nextCharacterData) => {
   //Estado para la respuesta a la elección del jugador:
   const [response, setResponse] = React.useState<string>('');
 
-  //Estado para desabilitar el panel de botones:
+  //Estado para deshabilitar el panel de botones:
   const [disableButton, setDisableButton] = React.useState<boolean>(false);
 
   //Estado para pintar de verde la respuesta correcta:
