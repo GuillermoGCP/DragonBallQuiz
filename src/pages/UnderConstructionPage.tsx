@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const PageNotFound = () => {
+const UnderConstructionPage = () => {
   return (
     <div className='constructionPageContainer mt-10 flex flex-col items-center justify-center'>
       <div>
@@ -19,4 +19,4 @@ const PageNotFound = () => {
     </div>
   );
 };
-export default PageNotFound;
+export default UnderConstructionPage;
